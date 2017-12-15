@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PageController@index');
+Route::resource('finance/categories', 'FinanceCategoryController', ['as' => 'finance']);

@@ -1,0 +1,67 @@
+.brand-logo {
+    margin-left: 16px;
+}
+
+.side-nav {
+    top: 65px;
+    width: 250px;
+}
+
+.side-nav .collapsible-header, .side-nav.fixed .collapsible-header {
+    padding: 0 32px;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 0px 5px 0px 5px;
+}
+
+.button-h2 {
+    margin-top: 25px;
+}
+
+.button-edit {
+    margin-right: 10px;
+}
+
+.btn-submit-form {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-full-width {
+    width: 100%;
+}
+
+.form-divider {
+    margin-bottom: 20px;
+}
+
+.detalis {
+    font-size: 300%;
+}
+
+h2 {
+    text-align: center;
+}
+
+dt {
+    float: left;
+    clear: left;
+    font-weight: bold;
+}
+
+dd {
+    margin: 0 0 0 100px;
+    padding: 0 0 0.5em 0;
+}
+
+@media only screen and (max-width : 992px) {
+    .content {
+        margin-left: 0px;
+    }
+
+    .brand-logo {
+        margin-left: 50px;
+    }
+}
