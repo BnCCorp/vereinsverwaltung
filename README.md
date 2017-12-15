@@ -30,6 +30,11 @@
 * Kategorie
 * Belegnummer?
 * Beleg?
+* Person?
+
+*Features*
+* Kassenbericht erstellen
+* Spendenquittungen ausstellen
 
 
 
