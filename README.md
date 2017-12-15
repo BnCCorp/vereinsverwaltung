@@ -1,8 +1,9 @@
-**Finanzen**
+**Featurelist**
 
-*Kategorien*
-* Name
-* Typ
+* Finanzen
+ ** Kategorien
+ * Name
+ * Typ
 
 *Barkonten*
 * Name
