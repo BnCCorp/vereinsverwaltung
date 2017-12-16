@@ -3,6 +3,8 @@ Featurelist
 
 Finanzen
 --------
+* Bugs:
+    * Collapse Dingen links sollte offen bleiben
 
 * Kategorien
   * Name

@@ -60,7 +60,7 @@ class FinanceCategoryController extends Controller
 
         $category->save();
 
-        Session::flash('success', 'Gespeichert!');
+        Session::flash('success', 'Kategorie angelegt.');
 
         return redirect()->route('finance.categories.index');
     }
@@ -103,7 +103,7 @@ class FinanceCategoryController extends Controller
 
         $category->save();
 
-        Session::flash('success', 'Gespeichert!');
+        Session::flash('success', 'Änderungen gespeichert.');
 
         return redirect()->route('finance.categories.index');
     }
@@ -119,7 +119,7 @@ class FinanceCategoryController extends Controller
         //
         $category = FinanceCategory::find($id);
         $category->delete();
-        Session::flash('success', 'Gelöscht!');
+        Session::flash('success', 'Eintrag gelöscht.');
         return redirect()->route('finance.categories.index');
     }
 }

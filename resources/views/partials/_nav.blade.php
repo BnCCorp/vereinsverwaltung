@@ -4,7 +4,7 @@
             <nav class="light-green lighten-1" role="navigation">
                 <div class="nav-wrapper">
                     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-                    <a href="#!" class="brand-logo left"><strong>NAJU</strong> Ahlen</a>
+                    <a href="{!! action('PageController@index') !!}" class="brand-logo left"><strong>NAJU</strong> Ahlen</a>
                 </div>
             </nav>
         </div>

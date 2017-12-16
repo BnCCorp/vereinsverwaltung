@@ -67,9 +67,18 @@ dd {
 }
 
 #toast-container {
+    bottom: auto !important;
+    left: auto !important;
+    top: 7%;
+    right: 2%;
+    /*background: #3c763d;*/
+}
+
+.btn-category-add {
     top: auto !important;
     left: auto !important;
-    bottom: 4%;
-    right: 2%;
+    bottom: 5%;
+    right: 3%;
+    position: absolute;
     /*background: #3c763d;*/
 }

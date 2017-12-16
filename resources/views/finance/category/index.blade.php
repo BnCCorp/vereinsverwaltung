@@ -4,13 +4,15 @@
 
 @section('content')
 
+    {{ Breadcrumbs::render('category') }}
+    <a href="{!! route('finance.categories.create') !!}" class="btn-floating btn-large waves-effect waves-light green btn-category-add"><i class="material-icons">add</i></a>
     <div class="row">
         <div class="col l8 offset-l1 m8 offset-m1 s10 offset-s1">
             <h2>Finanzen - Kategorien</h2>
         </div>
         <div class="col l2 m3 s12">
-            <a href="{!! route('finance.categories.create') !!}" class=" btn-large btn-full-width waves-effect waves-light green button-h2"><i class="material-icons left">add</i>Neu</a>
-            <!--<a href="{!! route('finance.categories.create') !!}" class=" btn-floating waves-effect waves-light green button-h2"><i class="material-icons left">add</i></a>-->
+            {{--<a href="{!! route('finance.categories.create') !!}" class=" btn-large btn-full-width waves-effect waves-light green button-h2"><i class="material-icons left">add</i>Neu</a>--}}
+            {{--<a href="{!! route('finance.categories.create') !!}" class=" btn-floating waves-effect waves-light green button-h2"><i class="material-icons left">add</i></a>--}}
         </div>
     </div>
     <div class="row">
@@ -28,8 +30,7 @@
                     <td>{{ $category->type }}</td>
                     <td>{{ $category->name }}</td>
                     <td>
-                        <a class="btn-floating waves-effect waves-light green lighten-1 button-edit"><i class="material-icons left">search</i></a>
-                        {{--<a class="btn-floating waves-effect waves-light yellow lighten-1 button-edit"><i class="material-icons left">edit</i></a>--}}
+                        {{--<a class="btn-floating waves-effect waves-light green lighten-1 button-edit"><i class="material-icons left">search</i></a>--}}
                         <a class="btn-floating waves-effect waves-light yellow lighten-1 button-edit">
                             {{ Form::open(['route' => ['finance.categories.edit', $category->id], 'method' => 'get']) }}
                             {{ Form::button('<i class="material-icons left">edit</i>', ['type' => 'submit', 'class' => 'btn-floating waves-effect waves-light yellow lighten-1 button-edit']) }}
