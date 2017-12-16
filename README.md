@@ -1,41 +1,44 @@
-**Featurelist**
+Featurelist
+===========
 
-* Finanzen
- ** Kategorien
- * Name
- * Typ
+Finanzen
+--------
 
-*Barkonten*
-* Name
-* Anfangsbestand
+* Kategorien
+  * Name
+  * Typ
 
-*Girokonten*
-* Name
-* Anfangsbestand
-* IBAN
+* *Barkonten*
+  * Name
+  * Anfangsbestand
 
-*Onlinekonten*
-* Name
-* Anfangsbestand
-* eMail Adresse
+* *Girokonten*
+  * Name
+  * Anfangsbestand
+  * IBAN
 
-*Tag*
-* Name
+* *Onlinekonten*
+  * Name
+  * Anfangsbestand
+  * eMail Adresse
 
-*Buchung*
-* Rechungsdatum
-* Bezahldatum
-* Erstellungsdatum
-* Zweck
-* Betrag
-* Kategorie
-* Belegnummer?
-* Beleg?
-* Person?
+* *Tag*
+  * Name
 
-*Features*
-* Kassenbericht erstellen
-* Spendenquittungen ausstellen
+* *Buchung*
+  * Rechungsdatum
+  * Bezahldatum
+  * Erstellungsdatum
+  * Zweck
+  * Betrag
+  * Kategorie
+  * Belegnummer?
+  * Beleg?
+  * Person?
+
+* *Features*
+  * Kassenbericht erstellen
+  * Spendenquittungen ausstellen
 
 
 
