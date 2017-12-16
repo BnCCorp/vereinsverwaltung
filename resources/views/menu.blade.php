@@ -4,12 +4,6 @@
     @include('partials._head')
 
     <body>
-        @include('partials._nav')
-        <div class="content">
-            @include('partials._messages')
-            @yield('content')
-        </div>
-
         <!-- jQuery -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
@@ -21,5 +15,13 @@
 
         <!-- additional scripts -->
         @yield('scripts')
+
+        @include('partials._nav')
+        <div class="content">
+            @yield('content')
+            @include('partials._messages')
+        </div>
+
+
     </body>
 </html>

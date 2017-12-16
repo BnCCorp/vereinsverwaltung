@@ -29,8 +29,17 @@
                     <td>{{ $category->name }}</td>
                     <td>
                         <a class="btn-floating waves-effect waves-light green lighten-1 button-edit"><i class="material-icons left">search</i></a>
-                        <a class="btn-floating waves-effect waves-light yellow lighten-1 button-edit"><i class="material-icons left">edit</i></a>
-                        <a class="btn-floating waves-effect waves-light red lighten-1"><i class="material-icons left">delete</i></a>
+                        {{--<a class="btn-floating waves-effect waves-light yellow lighten-1 button-edit"><i class="material-icons left">edit</i></a>--}}
+                        <a class="btn-floating waves-effect waves-light yellow lighten-1 button-edit">
+                            {{ Form::open(['route' => ['finance.categories.edit', $category->id], 'method' => 'get']) }}
+                            {{ Form::button('<i class="material-icons left">edit</i>', ['type' => 'submit', 'class' => 'btn-floating waves-effect waves-light yellow lighten-1 button-edit']) }}
+                            {{ Form::close() }}
+                        </a>
+                        <a class="btn-floating waves-effect waves-light red lighten-1">
+                            {{ Form::open(['route' => ['finance.categories.destroy', $category->id], 'method' => 'delete']) }}
+                            {{ Form::button('<i class="material-icons left">delete</i>', ['type' => 'submit', 'class' => 'btn-floating waves-effect waves-light red lighten-1']) }}
+                            {{ Form::close() }}
+                        </a>
                     </td>
                 </tr>
                 @endforeach

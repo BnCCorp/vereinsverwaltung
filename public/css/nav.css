@@ -56,7 +56,7 @@ dd {
     padding: 0 0 0.5em 0;
 }
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
     .content {
         margin-left: 0px;
     }
@@ -64,4 +64,12 @@ dd {
     .brand-logo {
         margin-left: 50px;
     }
+}
+
+#toast-container {
+    top: auto !important;
+    left: auto !important;
+    bottom: 4%;
+    right: 2%;
+    /*background: #3c763d;*/
 }

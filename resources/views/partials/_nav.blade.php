@@ -26,7 +26,7 @@
                     <a class="collapsible-header"><i class="material-icons">euro_symbol</i>Finanzen</a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="#!">Buchungen</a></li>
+                            <li><a href="#!">Transaktionen</a></li>
                             <li><a href="#!">Konten</a></li>
                             <li><a href="{!! route('finance.categories.index') !!}">Kategorien</a></li>
                             <li><a href="#!">Tags</a></li>
