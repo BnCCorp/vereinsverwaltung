@@ -4,9 +4,10 @@
 
 @section('content')
 
+    {{ Breadcrumbs::render('category', $category) }}
     <div class="row">
         <div class="col l8 offset-l2 m8 offset-m2 s10 offset-s1">
-            <h2>Finanzen - Editiere Kategorie</h2>
+            <h4>Editiere Kategorie</h4>
             <div class="divider form-divider"></div>
             {!! Form::open(['route' => ['finance.categories.update', $category->id], 'method' => 'put']) !!}
                 {{ Form::label('name', 'Name:') }}

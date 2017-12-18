@@ -11,7 +11,7 @@
     </div>
 </header>
 
-<aside>
+{{--<aside>--}}
     <ul id="slide-out" class="side-nav fixed">
         <li>
             <div class="col col s4 m4 l4">
@@ -19,21 +19,21 @@
             </div>
         </li>
         <li><a href="#!"><i class="material-icons">dashboard</i>Dashboard</a></li>
-        <li><a href="#!"><i class="material-icons">group</i>Mitglieder</a> </li>
+        <li><a href="{!! route('members.index') !!}"><i class="material-icons">group</i>Mitglieder</a> </li>
         <li>
             <ul class="collapsible collapsible-accordion">
                 <li>
                     <a class="collapsible-header"><i class="material-icons">euro_symbol</i>Finanzen</a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="#!">Transaktionen</a></li>
-                            <li><a href="#!">Konten</a></li>
-                            <li><a href="{!! route('finance.categories.index') !!}">Kategorien</a></li>
-                            <li><a href="#!">Tags</a></li>
+                            <li><a class="nav-collapse-element" href="#!">Transaktionen</a></li>
+                            <li><a class="nav-collapse-element" href="#!">Konten</a></li>
+                            <li><a class="nav-collapse-element" href="{!! route('finance.categories.index') !!}">Kategorien</a></li>
+                            <li><a class="nav-collapse-element" href="#!">Tags</a></li>
                         </ul>
                     </div>
                 </li>
             </ul>
         </li>
     </ul>
-</aside>
+{{--</aside>--}}

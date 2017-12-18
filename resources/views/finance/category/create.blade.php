@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col l8 offset-l2 m8 offset-m2 s10 offset-s1">
-            <h2>Finanzen - Neue Kategorie</h2>
+            <h4>Neue Kategorie</h4>
             <div class="divider form-divider"></div>
             {!! Form::open(['route' => 'finance.categories.store']) !!}
                 {{ Form::label('name', 'Name:') }}

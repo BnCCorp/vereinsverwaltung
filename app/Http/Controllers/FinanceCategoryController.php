@@ -40,8 +40,8 @@ class FinanceCategoryController extends Controller
     {
         $this->validate($request,
             [
-                'name' => 'required|max:191',
-                'type' => ['required',
+                'name' => 'bail|required|max:191',
+                'type' => ['bail|required',
                 'max:191',
                 Rule::in(['Einnahme', 'Ausgabe'])]
             ],
@@ -97,6 +97,22 @@ class FinanceCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,
+            [
+                'name' => 'required|max:191',
+                'type' => ['required',
+                    'max:191',
+                    Rule::in(['Einnahme', 'Ausgabe'])]
+            ],
+            [
+                'name.required' => 'Der Name darf nicht leer sein!',
+                'name.max'      => 'Der Name darf höchstens 191 Zeichen enthalten!',
+                'type.required' => 'Der Typ darf nicht leer sein!',
+                'type.max'      => 'Der Typ darf höchstens 191 Zeichen enthalten!',
+                'type.in'       => 'Der Typ muss Einnahme oder Ausgabe sein!'
+            ]
+        );
+
         $category = FinanceCategory::find($id);
         $category->name = $request->name;
         $category->type = $request->type;
@@ -116,10 +132,9 @@ class FinanceCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
         $category = FinanceCategory::find($id);
         $category->delete();
-        Session::flash('success', 'Eintrag gelöscht.');
+        Session::flash('success', 'Kategorie gelöscht.');
         return redirect()->route('finance.categories.index');
     }
 }
