@@ -7,37 +7,68 @@
  */
 
 // Home
-Breadcrumbs::register('home', function ($breadcrumbs) {
-    $breadcrumbs->push('Home', action('PageController@index'));
-});
+try {
+    Breadcrumbs::register('home', function ($breadcrumbs) {
+        $breadcrumbs->push('Home', action('PageController@index'));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
 
 // Home > Members
-Breadcrumbs::register('members', function ($breadcrumbs) {
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Mitglieder', action('MemberController@index'));
-});
+try {
+    Breadcrumbs::register('members', function ($breadcrumbs) {
+        $breadcrumbs->parent('home');
+        $breadcrumbs->push('Mitglieder', action('MemberController@index'));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
 
 // Home > Members > [Member]
-Breadcrumbs::register('member', function ($breadcrumbs, $member) {
-    $breadcrumbs->parent('members');
-    $tmp = $member->firstname . ' ' . $member->lastname;
-    $breadcrumbs->push($tmp, route('members.edit', $member->id));
-});
+try {
+    Breadcrumbs::register('member', function ($breadcrumbs, $member) {
+        $breadcrumbs->parent('members');
+        $tmp = $member->firstname . ' ' . $member->lastname;
+        $breadcrumbs->push($tmp, route('members.edit', $member->id));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
 
 // Home > Finance
-Breadcrumbs::register('finance', function ($breadcrumbs) {
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Finanzen', url('#!'));
-});
+try {
+    Breadcrumbs::register('finance', function ($breadcrumbs) {
+        $breadcrumbs->parent('home');
+        $breadcrumbs->push('Finanzen', url('#!'));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
 
 // Home > Finance > Categories
-Breadcrumbs::register('categories', function ($breadcrumbs) {
-    $breadcrumbs->parent('finance');
-    $breadcrumbs->push('Kategorie', action('FinanceCategoryController@index'));
-});
+try {
+    Breadcrumbs::register('categories', function ($breadcrumbs) {
+        $breadcrumbs->parent('finance');
+        $breadcrumbs->push('Kategorie', action('FinanceCategoryController@index'));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
 
 // Home > Finance > Categories > [Category]
-Breadcrumbs::register('category', function ($breadcrumbs, $category) {
-    $breadcrumbs->parent('categories');
-    $breadcrumbs->push($category->name, route('finance.categories.edit', $category->id));
-});
+try {
+    Breadcrumbs::register('category', function ($breadcrumbs, $category) {
+        $breadcrumbs->parent('categories');
+        $breadcrumbs->push($category->name, route('finance.categories.edit', $category->id));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
+
+//try {
+//    Breadcrumbs::register('category', function ($breadcrumbs, $category) {
+//        if ($category->parent) {
+//            $breadcrumbs->parent('category', $category->parent);
+//        } else {
+//            $breadcrumbs->parent('category');
+//        }
+//
+//        $breadcrumbs->push($category->name, route('category', $category->slug));
+//    });
+//} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+//}
