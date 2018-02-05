@@ -3,8 +3,6 @@ Featurelist
 
 Finanzen
 --------
-* Bugs:
-    * Collapse Dingen links sollte offen bleiben
 
 * Kategorien
   * Name
@@ -12,16 +10,22 @@ Finanzen
 
 * *Barkonten*
   * Name
+  * Typ
   * Anfangsbestand
+  * Betrag
 
 * *Girokonten*
   * Name
+  * Typ
   * Anfangsbestand
+  * Betrag
   * IBAN
 
 * *Onlinekonten*
   * Name
+  * Typ
   * Anfangsbestand
+  * Betrag
   * eMail Adresse
 
 * *Tag*
@@ -43,4 +47,15 @@ Finanzen
   * Spendenquittungen ausstellen
 
 
+Befehle
+=======
 
+Server starten:
+```
+php artisan serve
+```
+
+Model erstellen inkl. migration (mehr Erklärung einfügen)
+```
+php artisan make:model User -m
+```
