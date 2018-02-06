@@ -1,30 +1,27 @@
 @extends('menu')
 
-@section('title', '| Mitglieder - Neues Mitglied')
+@section('title', '| Finanzen - Konten')
 
 @section('content')
 
     <div class="row">
         <div class="col l8 offset-l2 m8 offset-m2 s10 offset-s1">
-            <h4>Neues Mitglied</h4>
+            <h4>Neues Konto</h4>
             <div class="divider form-divider"></div>
-            {!! Form::open(['route' => 'members.store']) !!}
-                {{ Form::label('firstname', 'Vorname:') }}
-                {{ Form::text('firstname', null, ['class' => 'input-field']) }}
-                {{ Form::label('lastname', 'Nachname:') }}
-                {{ Form::text('lastname', null, ['class' => 'input-field']) }}
-                {{ Form::label('street', 'Straße & Hausnummer:') }}
-                {{ Form::text('street', null, ['class' => 'input-field']) }}
-                {{ Form::label('zipcode', 'PLZ:') }}
-                {{ Form::text('zipcode', null, ['class' => 'input-field']) }}
-                {{ Form::label('city', 'Stadt:') }}
-                {{ Form::text('city', null, ['class' => 'input-field']) }}
-                {{ Form::label('email', 'Email:') }}
-                {{ Form::text('email', null, ['class' => 'input-field']) }}
-                {{ Form::label('phonenumber', 'Telefonnummer:') }}
-                {{ Form::text('phonenumber', null, ['class' => 'input-field']) }}
+            {!! Form::open(['route' => 'finance.bankaccounts.store']) !!}
+                {{ Form::label('name', 'Name:') }}
+                {{ Form::text('name', null, ['class' => 'input-field']) }}
+                {{ Form::label('type', 'Typ:') }}
+                {{ Form::select('type', ['Barkasse' => 'Barkasse', 'Girokonto' => 'Girokonto', 'Onlinekonto' => 'Onlinekonto'], null, ['placeholder' => 'Typ wählen...']) }}
+                {{ Form::label('startamount', 'Anfangsbetrag:') }}
+                {{ Form::text('startamount', null, ['class' => 'input-field']) }}
+                {{ Form::label('amount', 'Betrag:') }}
+                {{ Form::text('amount', null, ['class' => 'input-field']) }}
+                {{ Form::label('address', 'IBAN/Email:') }}
+                {{ Form::text('address', null, ['class' => 'input-field']) }}
                 {{ Form::button('Speichern<i class="material-icons right">send</i>', ['type' => 'submit', 'class' => 'btn btn-submit-form waves-effect waves-light green lighten-1']) }}
             {!! Form::close() !!}
         </div>
     </div>
+
 @endsection

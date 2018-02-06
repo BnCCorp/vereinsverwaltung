@@ -15,11 +15,11 @@ class CreateBankaccountsTable extends Migration
     {
         Schema::create('bankaccounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('type');
             $table->string('startamount');
             $table->string('amount');
-            $table->string('address');
+            $table->string('address')->unique();
             $table->timestamps();
         });
     }

@@ -1,29 +1,25 @@
 @extends('menu')
 
-@section('title', '| Mitglieder - Editiere Mitglied')
+@section('title', '| Finanzen - Editiere Konto')
 
 @section('content')
 
-    {{ Breadcrumbs::render('member', $member) }}
+    {{ Breadcrumbs::render('bankaccount', $bankaccount) }}
     <div class="row">
         <div class="col l8 offset-l2 m8 offset-m2 s10 offset-s1">
-            <h4>Editiere Mitglied</h4>
+            <h4>Editiere Kategorie</h4>
             <div class="divider form-divider"></div>
-            {!! Form::open(['route' => ['members.update', $member->id], 'method' => 'put']) !!}
-                {{ Form::label('firstname', 'Vorname:') }}
-                {{ Form::text('firstname', $member->firstname, ['class' => 'input-field']) }}
-                {{ Form::label('lastname', 'Nachname:') }}
-                {{ Form::text('lastname', $member->lastname, ['class' => 'input-field']) }}
-                {{ Form::label('street', 'Straße & Hausnummer:') }}
-                {{ Form::text('street', $member->street, ['class' => 'input-field']) }}
-                {{ Form::label('zipcode', 'PLZ:') }}
-                {{ Form::text('zipcode', $member->zipcode, ['class' => 'input-field']) }}
-                {{ Form::label('city', 'Stadt:') }}
-                {{ Form::text('city', $member->city, ['class' => 'input-field']) }}
-                {{ Form::label('email', 'Email:') }}
-                {{ Form::text('email', $member->email, ['class' => 'input-field']) }}
-                {{ Form::label('phonenumber', 'Telefonnummer:') }}
-                {{ Form::text('phonenumber', $member->phonenumber, ['class' => 'input-field']) }}
+            {!! Form::open(['route' => ['finance.categories.update', $bankaccount->id], 'method' => 'put']) !!}
+                {{ Form::label('name', 'Name:') }}
+                {{ Form::text('name', $bankaccount->name, ['class' => 'input-field']) }}
+                {{ Form::label('type', 'Typ:') }}
+                {{ Form::select('type', ['Barkasse' => 'Barkasse', 'Girokonto' => 'Girokonto', 'Onlinekonto' => 'Onlinekonto'], $bankaccount->type, ['placeholder' => 'Typ wählen...']) }}
+                {{ Form::label('startamount', 'Anfangsbetrag:') }}
+                {{ Form::text('startamount', $bankaccount->startamount, ['class' => 'input-field']) }}
+                {{ Form::label('amount', 'Betrag:') }}
+                {{ Form::text('amount', $bankaccount->amount, ['class' => 'input-field']) }}
+                {{ Form::label('address', 'IBAN/Email:') }}
+                {{ Form::text('address', $bankaccount->address, ['class' => 'input-field']) }}
                 {{ Form::button('Speichern<i class="material-icons right">send</i>', ['type' => 'submit', 'class' => 'btn btn-submit-form waves-effect waves-light green lighten-1']) }}
             {!! Form::close() !!}
         </div>
