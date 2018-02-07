@@ -10,13 +10,14 @@ namespace App\Http\Controllers;
 
 use App\Bankaccount;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Session;
 
 /**
  * Class BankaccountController
  * @package App\Http\Controllers
  */
-class BankaccountController
+class FinanceBankaccountController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +27,7 @@ class BankaccountController
     public function index()
     {
         $bankaccounts = Bankaccount::all();
-        return view('bankaccounts.index')->with('bankaccounts', $bankaccounts);
+        return view('finance.bankaccounts.index')->with('bankaccounts', $bankaccounts);
     }
 
     /**
@@ -36,7 +37,7 @@ class BankaccountController
      */
     public function create()
     {
-        return view('bankaccounts.create');
+        return view('finance.bankaccounts.create');
     }
 
     /**
@@ -59,7 +60,7 @@ class BankaccountController
                 'type' => 'bail|required|max:191',
                 'startamount' => 'bail|required|max:191',
                 'amount' => 'bail|required|max:191',
-                'address' => 'bail|required|unique:address|max:191',
+                'address' => ['bail','required','unique:address','max:191', Rule::in(['Barkasse', 'Girokonto', 'Onlinekonto'])],
             ],
             [
                 'name.required' => 'Der Name darf nicht leer sein!',

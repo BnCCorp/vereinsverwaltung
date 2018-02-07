@@ -27,7 +27,7 @@
                     <div class="collapsible-body">
                         <ul>
                             <li><a class="nav-collapse-element" href="#!">Transaktionen</a></li>
-                            <li><a class="nav-collapse-element" href="#!">Konten</a></li>
+                            <li><a class="nav-collapse-element" href="{!! route('finance.bankaccounts.index') !!}">Konten</a></li>
                             <li><a class="nav-collapse-element" href="{!! route('finance.categories.index') !!}">Kategorien</a></li>
                             <li><a class="nav-collapse-element" href="#!">Tags</a></li>
                         </ul>

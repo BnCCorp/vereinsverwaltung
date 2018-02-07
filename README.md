@@ -55,7 +55,12 @@ Server starten:
 php artisan serve
 ```
 
-Model erstellen inkl. migration (mehr Erklärung einfügen)
+Model erstellen inkl. migration (mehr Erklärung einfügen, zb was ist ne Migration)
 ```
 php artisan make:model User -m
+```
+
+create tables in Database
+```
+php artisan migrate
 ```
