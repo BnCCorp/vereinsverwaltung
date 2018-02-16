@@ -45,12 +45,6 @@ class FinanceBankaccountController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     *
-     *  $table->string('name')->unique();
-        $table->string('type');
-        $table->string('startamount');
-        $table->string('amount');
-        $table->string('address')
      */
     public function store(Request $request)
     {
@@ -63,9 +57,9 @@ class FinanceBankaccountController extends Controller
                 'address' => ['bail','required','unique:address','max:191', Rule::in(['Barkasse', 'Girokonto', 'Onlinekonto'])],
             ],
             [
-                'name.required' => 'Der Name darf nicht leer sein!',
-                'name.max'      => 'Der Name darf höchstens 191 Zeichen enthalten!',
-                'name.unique' => 'Der Name ist bereits vergeben!',
+//                'name.required' => 'Der Name darf nicht leer sein!',
+//                'name.max'      => 'Der Name darf höchstens 191 Zeichen enthalten!',
+//                'name.unique' => 'Der Name ist bereits vergeben!',
                 'type.required' => 'Der Typ darf nicht leer sein!',
                 'type.max'      => 'Der Typ darf höchstens 191 Zeichen enthalten!',
                 'startamount.required' => 'Der Anfangsbetrag darf nicht leer sein!',
@@ -89,7 +83,7 @@ class FinanceBankaccountController extends Controller
 
         Session::flash('success', 'Konto angelegt.');
 
-        return redirect()->route('bankaccounts.index');
+        return redirect()->route('finance.bankaccounts.index');
     }
 
     /**
@@ -112,7 +106,7 @@ class FinanceBankaccountController extends Controller
     public function edit($id)
     {
         $bankaccount = Bankaccount::find($id);
-        return view('bankaccounts.edit')->with('bankaccount', $bankaccount);
+        return view('finance.bankaccounts.edit')->with('bankaccount', $bankaccount);
     }
 
     /**
@@ -159,7 +153,7 @@ class FinanceBankaccountController extends Controller
 
         Session::flash('success', 'Änderungen gespeichert.');
 
-        return redirect()->route('bankaccounts.index');
+        return redirect()->route('finance.bankaccounts.index');
     }
 
     /**
@@ -173,6 +167,6 @@ class FinanceBankaccountController extends Controller
         $bankaccount = Bankaccount::find($id);
         $bankaccount->delete();
         Session::flash('success', 'Konto gelöscht.');
-        return redirect()->route('bankaccounts.index');
+        return redirect()->route('finance.bankaccounts.index');
     }
 }
