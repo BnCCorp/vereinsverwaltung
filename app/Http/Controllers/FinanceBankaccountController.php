@@ -50,16 +50,16 @@ class FinanceBankaccountController extends Controller
     {
         $this->validate($request,
             [
-                'name' => 'bail|required|unique:name|max:191',
-                'type' => 'bail|required|max:191',
+                'name' => 'bail|required|unique:bankaccounts|max:191',
+                'type' => ['bail', 'required', 'max:191', Rule::in(['Barkasse', 'Girokonto', 'Onlinekonto'])],
                 'startamount' => 'bail|required|max:191',
                 'amount' => 'bail|required|max:191',
-                'address' => ['bail','required','unique:address','max:191', Rule::in(['Barkasse', 'Girokonto', 'Onlinekonto'])],
+                'address' => 'bail|required|unique:bankaccounts|max:191',
             ],
             [
-//                'name.required' => 'Der Name darf nicht leer sein!',
-//                'name.max'      => 'Der Name darf höchstens 191 Zeichen enthalten!',
-//                'name.unique' => 'Der Name ist bereits vergeben!',
+                'name.required' => 'Der Name darf nicht leer sein!',
+                'name.max'      => 'Der Name darf höchstens 191 Zeichen enthalten!',
+                'name.unique' => 'Der Name ist bereits vergeben!',
                 'type.required' => 'Der Typ darf nicht leer sein!',
                 'type.max'      => 'Der Typ darf höchstens 191 Zeichen enthalten!',
                 'startamount.required' => 'Der Anfangsbetrag darf nicht leer sein!',
