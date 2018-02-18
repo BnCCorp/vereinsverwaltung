@@ -7,7 +7,7 @@
     {{ Breadcrumbs::render('bankaccount', $bankaccount) }}
     <div class="row">
         <div class="col l8 offset-l2 m8 offset-m2 s10 offset-s1">
-            <h4>Editiere Kategorie</h4>
+            <h4>Editiere Konto</h4>
             <div class="divider form-divider"></div>
             {!! Form::open(['route' => ['finance.categories.update', $bankaccount->id], 'method' => 'put']) !!}
                 {{ Form::label('name', 'Name:') }}
