@@ -120,11 +120,11 @@ class FinanceBankaccountController extends Controller
     {
         $this->validate($request,
             [
-                'name' => 'bail|required|unique:name|max:191',
+                'name' => 'bail|required|unique:bankaccounts|max:191',
                 'type' => 'bail|required|max:191',
                 'startamount' => 'bail|required|max:191',
                 'amount' => 'bail|required|max:191',
-                'address' => 'bail|required|unique:address|max:191',
+                'address' => 'bail|required|unique:bankaccounts|max:191',
             ],
             [
                 'name.required' => 'Der Name darf nicht leer sein!',

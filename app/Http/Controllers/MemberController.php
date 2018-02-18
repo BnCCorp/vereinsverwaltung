@@ -121,7 +121,7 @@ class MemberController extends Controller
                 'street' => 'bail|required|max:191',
                 'zipcode' => 'bail|required|max:191',
                 'city' => 'bail|required|max:191',
-                'email' => 'bail|required|max:191',
+                'email' => 'bail|required|unique:members|email|max:191',
                 'phonenumber' => 'bail|max:191',
             ],
             [
@@ -136,7 +136,9 @@ class MemberController extends Controller
                 'city.required' => 'Der Stadt darf nicht leer sein!',
                 'city.max'      => 'Der Stadt darf höchstens 191 Zeichen enthalten!',
                 'email.required' => 'Der Email darf nicht leer sein!',
+                'email.unique' => 'Der Email ist bereits vergeben!',
                 'email.max'      => 'Der Email darf höchstens 191 Zeichen enthalten!',
+                'email.email' => 'Das ist keine gültige Email-Adresse!',
                 'phonenumber.max'      => 'Der Telefonnummer darf höchstens 191 Zeichen enthalten!',
             ]
         );
