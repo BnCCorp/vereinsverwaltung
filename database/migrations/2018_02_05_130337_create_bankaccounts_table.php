@@ -19,7 +19,7 @@ class CreateBankaccountsTable extends Migration
             $table->string('type');
             $table->string('startamount');
             $table->string('amount');
-            $table->string('address')->unique();
+            $table->string('address')->unique()->nullable();
             $table->timestamps();
         });
     }
