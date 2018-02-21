@@ -40,15 +40,14 @@ class FinanceCategoryController extends Controller
     {
         $this->validate($request,
             [
-                'name' => 'bail|required|max:191',
-                'type' => ['required',
-                'max:191',
-                Rule::in(['Einnahme', 'Ausgabe'])]
+                'name' => 'bail|required|max:191|unique:finance_categories,name,NULL,id,type,' . $request->type,
+                'type' => ['required', 'max:191', Rule::in(['Einnahme', 'Ausgabe'])]
             ],
             [
                 'name.required' => 'Der Name darf nicht leer sein!',
                 'name.bail' => 'Der Name darf nicht leer sein!',
                 'name.max'      => 'Der Name darf höchstens 191 Zeichen enthalten!',
+                'name.unique' => 'Die Kategorie existiert bereits!',
                 'type.required' => 'Der Typ darf nicht leer sein!',
                 'type.bail'     => 'Der Typ darf nicht leer sein!',
                 'type.max'      => 'Der Typ darf höchstens 191 Zeichen enthalten!',

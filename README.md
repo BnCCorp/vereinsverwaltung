@@ -1,8 +1,6 @@
-Featurelist
-===========
+# Featurelist
 
-Finanzen
---------
+## Finanzen
 
 * Kategorien
   * Name
@@ -47,8 +45,7 @@ Finanzen
   * Spendenquittungen ausstellen
 
 
-Befehle
-=======
+# Befehle
 
 Falls ihr ne Tabelle löscht in phpMyAdmin: Auch den Eintrag in "migrations" löschen, damit ihr sie wieder mit 
 ```
@@ -56,12 +53,12 @@ php artisan migrate
 ```
 erstellen könnt!
 
-Server starten:
+### Server starten
 ```
 php artisan serve
 ```
 
-Model erstellen inkl. migration (mehr Erklärung einfügen, zb was ist ne Migration) (User durch Tabelle ersetzen)
+### Model erstellen inkl. migration
 ```
 php artisan make:model User -m
 ```
@@ -71,7 +68,19 @@ create tables in Database (User durch Tabelle ersetzen)
 php artisan make:migration create_users_table --create=users
 ```
 
-To run all of your outstanding migrations, execute the migrate Artisan command:
+### Alle migrations ausführen
 ```
 php artisan migrate
+```
+
+### Unique Validation für 2 Spalten
+```
+'unique:TABELLEN_NAME,SPALTE_1,NULL,id,SPALTE_2,' . request->WERT_VON_SPALTE_2
+```
+
+####Beispiel:
+
+Bei einer Finanzkategorie muss die Kombination aus `name` und `type` eindeutig sein
+```
+'unique:finance_categories,name,NULL,id,type,' . request->type
 ```
