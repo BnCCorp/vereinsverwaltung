@@ -35,5 +35,24 @@
                 </li>
             </ul>
         </li>
+        <li><a href="#!"><i class="material-icons">chat</i>Angelegenheiten</a></li>
+        <li><a href="#!"><i class="material-icons">loop</i>Fortwährende Tasks</a></li>
+        <li>
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a href="#!" class="collapsible-header"><i class="material-icons">move_to_inbox</i>Inventar</a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!"><i class="material-icons">format_list_numbered</i>Inventuren</a></li> {{--or archive--}}
+                            <li><a href="#!"><i class="material-icons">restore</i>Ausleihe</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#!"><i class="material-icons">insert_drive_file</i>Dateiablage</a></li>
+        <li><a href="#!"><i class="material-icons">show_chart</i>Statistiken</a></li>
+        <li><a href="#!"><i class="material-icons">perm_contact_calendar</i>Kalender</a></li>
+        <li><a href="#!"><i class="material-icons">format_align_justify</i>Log</a></li>
     </ul>
 {{--</aside>--}}
