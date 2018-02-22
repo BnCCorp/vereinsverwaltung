@@ -13,9 +13,6 @@
         <!-- Script for nav -->
         <script type="text/javascript" src="{!! asset('js/nav.js') !!}"></script>
 
-        <!-- Script for nav -->
-        <script type="text/javascript" src="{!! asset('js/verwaltung.js') !!}"></script>
-
         <!-- additional scripts -->
         @yield('scripts')
 
