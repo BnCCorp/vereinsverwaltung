@@ -29,7 +29,7 @@
                     <td>{{ $account->name }}</td>
                     <td>{{ $account->type }}</td>
                     <td>{{ $account->startamount }}</td>
-                    <td>0</td>
+                    <td>{{ $account->amount }}</td>
                     <td>{{ $account->address }}</td>
                     <td>
                         <a class="btn-floating waves-effect waves-light yellow lighten-1 button-edit">
