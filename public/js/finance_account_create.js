@@ -1,6 +1,4 @@
 function accountTypeChanged() {
-    console.log($('#account-type').val() == "Barkasse")
-    // console.log("$('#new-account-type :selected').text(): " + $('#new-account-type :selected').text())
     if($('#account-type').val() == 'Barkasse') {
         $("#address-label").hide();
         $("#address-input").hide();
