@@ -13,5 +13,5 @@
 
 Route::get('/', 'PageController@index');
 Route::resource('finance/categories', 'FinanceCategoryController', ['as' => 'finance']);
-Route::resource('finance/bankaccounts', 'FinanceBankaccountController', ['as' => 'finance']);
+Route::resource('finance/accounts', 'FinanceAccountController', ['as' => 'finance']);
 Route::resource('members', 'MemberController');

@@ -62,18 +62,18 @@ try {
 
 // Home > Finance > Bankaccounts
 try {
-    Breadcrumbs::register('bankaccounts', function ($breadcrumbs) {
+    Breadcrumbs::register('accounts', function ($breadcrumbs) {
         $breadcrumbs->parent('finance');
-        $breadcrumbs->push('Konten', action('FinanceBankaccountController@index'));
+        $breadcrumbs->push('Konten', action('FinanceAccountController@index'));
     });
 } catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
 }
 
 // Home > Finance > Bankaccounts > [Bankaccount]
 try {
-    Breadcrumbs::register('bankaccount', function ($breadcrumbs, $category) {
-        $breadcrumbs->parent('bankaccounts');
-        $breadcrumbs->push($category->name, route('finance.bankaccounts.edit', $category->id));
+    Breadcrumbs::register('account', function ($breadcrumbs, $account) {
+        $breadcrumbs->parent('accounts');
+        $breadcrumbs->push($account->name, route('finance.accounts.edit', $account->id));
     });
 } catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
 }

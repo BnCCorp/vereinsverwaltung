@@ -78,7 +78,7 @@ php artisan migrate
 'unique:TABELLEN_NAME,SPALTE_1,NULL,id,SPALTE_2,' . request->WERT_VON_SPALTE_2
 ```
 
-####Beispiel:
+#### Beispiel:
 
 Bei einer Finanzkategorie muss die Kombination aus `name` und `type` eindeutig sein
 ```
