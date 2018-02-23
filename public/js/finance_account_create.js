@@ -1,5 +1,7 @@
 function accountTypeChanged() {
-    if($('#account-type').val() != ('Girokonto') && $('#account-type').val() != ('Onlinekonto')) {
+    // Placeholder zeigt kein IBAN/Email Feld an
+    // Verschachtelte erste Abfrage funzt nicht
+    if($('#account-type').val() != 'Girokonto' && $('#account-type').val() != 'Onlinekonto') {
         $("#address-label").hide();
         $("#address-input").hide();
         $("#address-input").val('');

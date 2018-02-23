@@ -26,17 +26,17 @@
                     <a class="collapsible-header"><i class="material-icons">euro_symbol</i>Finanzen</a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a class="nav-collapse-element" href="#!">Transaktionen</a></li>
-                            <li><a class="nav-collapse-element" href="{!! route('finance.accounts.index') !!}">Konten</a></li>
-                            <li><a class="nav-collapse-element" href="{!! route('finance.categories.index') !!}">Kategorien</a></li>
-                            <li><a class="nav-collapse-element" href="#!">Tags</a></li>
-                            <li><a class="nav-collapse-element" href="#!">Auswertungen</a></li>
+                            <li><a class="nav-collapse-element" href="#!"><i class="material-icons">credit-card</i>Transaktionen</a></li>
+                            <li><a class="nav-collapse-element" href="{!! route('finance.accounts.index') !!}"><i class="material-icons">account_balance</i>Konten</a></li>
+                            <li><a class="nav-collapse-element" href="{!! route('finance.categories.index') !!}"><i class="material-icons">local_offer</i>Kategorien</a></li>
+                            <li><a class="nav-collapse-element" href="#!"><i class="material-icons">format_list_numbered</i>Tags</a></li>
+                            <li><a class="nav-collapse-element" href="#!"><i class="material-icons">format_list_numbered</i>Auswertungen</a></li>
                         </ul>
                     </div>
                 </li>
             </ul>
         </li>
-        <li><a href="#!"><i class="material-icons">chat</i>Angelegenheiten</a></li>
+        <li><a href="#!"><i class="material-icons">forum</i>Angelegenheiten</a></li> {{--or chat--}}
         <li><a href="#!"><i class="material-icons">loop</i>Fortwährende Tasks</a></li>
         <li>
             <ul class="collapsible collapsible-accordion">
@@ -44,8 +44,8 @@
                     <a href="#!" class="collapsible-header"><i class="material-icons">move_to_inbox</i>Inventar</a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="#!"><i class="material-icons">format_list_numbered</i>Inventuren</a></li> {{--or archive--}}
-                            <li><a href="#!"><i class="material-icons">restore</i>Ausleihe</a></li>
+                            <li><a class="nav-collapse-element" href="#!"><i class="material-icons">format_list_numbered</i>Inventuren</a></li> {{--or archive--}}
+                            <li><a class="nav-collapse-element" href="#!"><i class="material-icons">restore</i>Ausleihe</a></li>
                         </ul>
                     </div>
                 </li>
