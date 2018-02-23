@@ -26,11 +26,11 @@
                     <a class="collapsible-header"><i class="material-icons">euro_symbol</i>Finanzen</a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a class="nav-collapse-element" href="#!"><i class="material-icons">credit-card</i>Transaktionen</a></li>
+                            <li><a class="nav-collapse-element" href="#!"><i class="material-icons">credit_card</i>Transaktionen</a></li>
                             <li><a class="nav-collapse-element" href="{!! route('finance.accounts.index') !!}"><i class="material-icons">account_balance</i>Konten</a></li>
-                            <li><a class="nav-collapse-element" href="{!! route('finance.categories.index') !!}"><i class="material-icons">local_offer</i>Kategorien</a></li>
-                            <li><a class="nav-collapse-element" href="#!"><i class="material-icons">format_list_numbered</i>Tags</a></li>
-                            <li><a class="nav-collapse-element" href="#!"><i class="material-icons">format_list_numbered</i>Auswertungen</a></li>
+                            <li><a class="nav-collapse-element" href="{!! route('finance.categories.index') !!}"><i class="material-icons">inbox</i>Kategorien</a></li>
+                            <li><a class="nav-collapse-element" href="#!"><i class="material-icons">local_offer</i>Tags</a></li>
+                            <li><a class="nav-collapse-element" href="#!"><i class="material-icons">playlist_add_check</i>Auswertungen</a></li>
                         </ul>
                     </div>
                 </li>
@@ -51,7 +51,7 @@
                 </li>
             </ul>
         </li>
-        <li><a href="#!"><i class="material-icons">insert_drive_file</i>Dateiablage</a></li>
+        <li><a href="#!"><i class="material-icons">attach_file</i>Dateiablage</a></li> {{--or insert_drive_file--}}
         <li><a href="#!"><i class="material-icons">show_chart</i>Statistiken</a></li>
         <li><a href="#!"><i class="material-icons">perm_contact_calendar</i>Kalender</a></li>
         <li><a href="#!"><i class="material-icons">format_align_justify</i>Log</a></li>
