@@ -11,7 +11,7 @@
             <div class="divider form-divider"></div>
             {!! Form::open(['route' => ['finance.categories.update', $category->id], 'method' => 'put']) !!}
                 {{ Form::label('name', 'Name:') }}
-                {{ Form::text('name', $category->name, ['class' => 'input-field']) }}
+                {{ Form::text('name', $category->name, ['class' => 'input-field', 'autofocus']) }}
                 {{ Form::label('type', 'Typ:') }}
                 {{ Form::select('type', ['Einnahme' => 'Einnahme', 'Ausgabe' => 'Ausgabe'], $category->type, ['placeholder' => 'Typ wählen...']) }}
                 <div>

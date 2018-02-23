@@ -11,7 +11,7 @@
             <div class="divider form-divider"></div>
             {!! Form::open(['route' => ['members.update', $member->id], 'method' => 'put']) !!}
                 {{ Form::label('firstname', 'Vorname:') }}
-                {{ Form::text('firstname', $member->firstname, ['class' => 'input-field']) }}
+                {{ Form::text('firstname', $member->firstname, ['class' => 'input-field', 'autofocus']) }}
                 {{ Form::label('lastname', 'Nachname:') }}
                 {{ Form::text('lastname', $member->lastname, ['class' => 'input-field']) }}
                 {{ Form::label('street', 'Straße & Hausnummer:') }}

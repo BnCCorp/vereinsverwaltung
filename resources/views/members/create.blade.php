@@ -10,7 +10,7 @@
             <div class="divider form-divider"></div>
             {!! Form::open(['route' => 'members.store']) !!}
                 {{ Form::label('firstname', 'Vorname:') }}
-                {{ Form::text('firstname', null, ['class' => 'input-field']) }}
+                {{ Form::text('firstname', null, ['class' => 'input-field', 'autofocus']) }}
                 {{ Form::label('lastname', 'Nachname:') }}
                 {{ Form::text('lastname', null, ['class' => 'input-field']) }}
                 {{ Form::label('street', 'Straße & Hausnummer:') }}

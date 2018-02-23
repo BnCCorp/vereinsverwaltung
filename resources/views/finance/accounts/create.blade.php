@@ -1,6 +1,6 @@
 @extends('menu')
 
-@section('title', '| Finanzen - Konten')
+@section('title', '| Finanzen - Neues Konte')
 
 @section('content')
 

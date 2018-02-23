@@ -10,7 +10,7 @@
             <div class="divider form-divider"></div>
             {!! Form::open(['route' => 'finance.categories.store']) !!}
                 {{ Form::label('name', 'Name:') }}
-                {{ Form::text('name', null, ['class' => 'input-field']) }}
+                {{ Form::text('name', null, ['class' => 'input-field', 'autofocus']) }}
                 {{ Form::label('type', 'Typ:') }}
                 {{ Form::select('type', ['Einnahme' => 'Einnahme', 'Ausgabe' => 'Ausgabe'], null, ['placeholder' => 'Typ wählen...']) }}
                 <div>
