@@ -13,4 +13,10 @@ class FinanceAccount extends Model
     {
         return $this->startamount * 10;
     }
+
+    // one to many for transaction
+    public function finance_transactions()
+    {
+        return $this->hasMany('App\FinanceTransaction');
+    }
 }

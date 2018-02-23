@@ -33,6 +33,7 @@
   * Rechungsdatum
   * Bezahldatum
   * Erstellungsdatum
+  * Konto
   * Zweck
   * Betrag
   * Kategorie
