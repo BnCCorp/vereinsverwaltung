@@ -1,5 +1,5 @@
 function accountTypeChanged() {
-    if($('#account-type').val() == 'Barkasse') {
+    if($('#account-type').val() != ('Girokonto') && $('#account-type').val() != ('Onlinekonto')) {
         $("#address-label").hide();
         $("#address-input").hide();
         $("#address-input").val('');

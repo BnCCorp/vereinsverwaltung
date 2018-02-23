@@ -30,6 +30,7 @@
                             <li><a class="nav-collapse-element" href="{!! route('finance.accounts.index') !!}">Konten</a></li>
                             <li><a class="nav-collapse-element" href="{!! route('finance.categories.index') !!}">Kategorien</a></li>
                             <li><a class="nav-collapse-element" href="#!">Tags</a></li>
+                            <li><a class="nav-collapse-element" href="#!">Auswertungen</a></li>
                         </ul>
                     </div>
                 </li>

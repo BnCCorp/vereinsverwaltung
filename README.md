@@ -58,12 +58,12 @@ erstellen könnt!
 php artisan serve
 ```
 
-### Model erstellen inkl. migration
+### Model erstellen
 ```
 php artisan make:model User -m
 ```
 
-create tables in Database (User durch Tabelle ersetzen)
+### create Migrations File (User durch Tabelle ersetzen)
 ```
 php artisan make:migration create_users_table --create=users
 ```
