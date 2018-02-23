@@ -78,6 +78,24 @@ try {
 } catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
 }
 
+// Home > Finance > Tags
+try {
+    Breadcrumbs::register('tags', function ($breadcrumbs) {
+        $breadcrumbs->parent('finance');
+        $breadcrumbs->push('Tags', action('FinanceTagController@index'));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
+
+// Home > Finance > Tags > [Tag]
+try {
+    Breadcrumbs::register('tag', function ($breadcrumbs, $tag) {
+        $breadcrumbs->parent('tags');
+        $breadcrumbs->push($tag->name, route('finance.tags.edit', $tag->id));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
+
 //try {
 //    Breadcrumbs::register('category', function ($breadcrumbs, $category) {
 //        if ($category->parent) {

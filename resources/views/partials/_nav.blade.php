@@ -29,7 +29,7 @@
                             <li><a class="nav-collapse-element" href="#!">Transaktionen</a></li>
                             <li><a class="nav-collapse-element" href="{!! route('finance.accounts.index') !!}">Konten</a></li>
                             <li><a class="nav-collapse-element" href="{!! route('finance.categories.index') !!}">Kategorien</a></li>
-                            <li><a class="nav-collapse-element" href="#!">Tags</a></li>
+                            <li><a class="nav-collapse-element" href="{!! route('finance.tags.index') !!}">Tags</a></li>
                         </ul>
                     </div>
                 </li>
