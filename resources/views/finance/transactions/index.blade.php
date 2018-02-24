@@ -32,11 +32,14 @@
                     <td>{{ date("d.m.Y", strtotime($transaction->invoicedate)) }}</td>
                     <td>{{ date("d.m.Y", strtotime($transaction->paydate)) }}</td>
                     <td>{{ $transaction->purpose }}</td>
-                    <td>{{ App\FinanceAccount::find($transaction->finance_account_id)->name }}</td>
+                    {{--Der Eintrag kann, aufgrund von foreignkey, null sein--}}
+                    <td>{!! $transaction->finance_account_id ? App\FinanceAccount::find($transaction->finance_account_id)->name : 'undefined' !!}
                     <td>{{ $transaction->amount }}</td>
-                    <td>{{ App\FinanceCategory::find($transaction->finance_category_id)->name }}</td>
+                    {{--Der Eintrag kann, aufgrund von foreignkey, null sein--}}
+                    <td>{!! $transaction->finance_category_id ? App\FinanceCategory::find($transaction->finance_category_id)->name : 'undefined' !!}
                     <td>{{ $transaction->receiptnumber }}</td>
-                    <td>{{ App\Member::find($transaction->member_id)->lastname }}</td>
+                    {{--Der Eintrag kann, aufgrund von foreignkey, null sein--}}
+                    <td>{!! $transaction->member_id ? App\Member::find($transaction->member_id)->lastname : 'undefined' !!}</td>
                     <td>
                         <a class="btn-floating waves-effect waves-light yellow lighten-1 button-edit">
                             {{ Form::open(['route' => ['finance.transactions.edit', $transaction->id], 'method' => 'get']) }}
