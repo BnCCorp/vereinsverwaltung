@@ -9,7 +9,7 @@
         <div class="col l8 offset-l2 m8 offset-m2 s10 offset-s1">
             <h4>Editiere Kategorie</h4>
             <div class="divider form-divider"></div>
-            {!! Form::open(['route' => ['finance.categories.update', $category->id], 'method' => 'put']) !!}
+            {!! Form::open(['route' => ['finance.category.update', $category->id], 'method' => 'put']) !!}
                 {{ Form::label('name', 'Name:') }}
                 {{ Form::text('name', $category->name, ['class' => 'input-field', 'autofocus']) }}
                 {{ Form::label('type', 'Typ:') }}
