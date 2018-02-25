@@ -23,4 +23,11 @@ class FinanceTransaction extends Model
     {
         return $this->belongsTo('App\FinanceAccount');
     }
+
+
+    // many to many for transaction
+    public function tags()
+    {
+        return $this->belongsToMany('App\FinanceTag')->withTimestamps();
+    }
 }

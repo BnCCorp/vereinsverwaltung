@@ -45,6 +45,17 @@
   * Kassenbericht erstellen
   * Spendenquittungen ausstellen
 
+# Migrations
+Beispielname: `2017_12_15_193214_create_members_table`  
+Wird nun `php artisan migrate` ausgeführt, dann ist die im Anschluss überflüssig. Änderungen in dieser führen zu keinem
+Erfolg. Migrations können nur einmal ausgeführt werden. Jede Änderung an der Datenbank erfordert eine eigene Migration,
+so auch das Ändern und Löschen von Einträgen/Spalten. Dazu eine Migration erstellen mit
+```
+php artisan make:migration drop_x_column_from_y
+```
+Dazu wie in [https://laracasts.com/discuss/channels/general-discussion/cant-drop-column-with-dropcolumn](https://laracasts.com/discuss/channels/general-discussion/cant-drop-column-with-dropcolumn)
+beschrieben in der Methode `up` die z.B. Löschung vornehmen und in der Methode `down` das Inverse dazu ausführen, also z.B.
+das Erstellen der Spalte.
 
 # Befehle
 
@@ -60,13 +71,14 @@ php artisan serve
 ```
 
 ### Model erstellen
+Das Model generiert zusätzlich automatisch eine Migration File (make:migration Befehl ist hier nicht notwendig)
 ```
 php artisan make:model User -m
 ```
 
-### create Migrations File (User durch Tabelle ersetzen)
+### create Migrations File (users durch Tabelle/Befehl ersetzen)
 ```
-php artisan make:migration create_users_table --create=users
+php artisan make:migration create_users_table
 ```
 
 ### Alle migrations ausführen
@@ -85,3 +97,11 @@ Bei einer Finanzkategorie muss die Kombination aus `name` und `type` eindeutig s
 ```
 'unique:finance_categories,name,NULL,id,type,' . request->type
 ```
+
+# Database Relationship
+* Fremdschlüssel:
+    * bei 1:n bekommt die Tabelle, welche jeweils nur einen anderen Wert speichern kann, die Fremdschlüssel.
+    Diese werden in der Migration wie folgt gesetzt: [https://coderwall.com/p/o73fbq/creating-foreign-key-in-laravel-migrations](https://coderwall.com/p/o73fbq/creating-foreign-key-in-laravel-migrations)
+    Die Änderungen im Model sind hier beschrieben: [https://www.easylaravelbook.com/blog/creating-a-hasmany-relation-in-laravel-5/](https://www.easylaravelbook.com/blog/creating-a-hasmany-relation-in-laravel-5/)
+    
+    * bei n:m diesem Tutorial folgen: [https://www.easylaravlbook.com/blog/introducing-laravel-many-to-many-relations/](https://www.easylaravelbook.com/blog/introducing-laravel-many-to-many-relations/)

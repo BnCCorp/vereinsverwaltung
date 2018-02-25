@@ -8,6 +8,7 @@
         "php": ">=7.0.0",
         "barryvdh/laravel-ide-helper": "v2.4.1",
         "davejamesmiller/laravel-breadcrumbs": "^4.2",
+        "doctrine/dbal": "^2.6",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",

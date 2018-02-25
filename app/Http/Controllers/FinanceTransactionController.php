@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\FinanceAccount;
 use App\FinanceCategory;
+use App\FinanceTag;
 use App\FinanceTransaction;
 use App\Member;
 use Illuminate\Http\Request;
@@ -33,7 +34,12 @@ class FinanceTransactionController extends Controller
         $categories = FinanceCategory::pluck('name', 'id');
         $accounts = FinanceAccount::pluck('name', 'id');
         $members = Member::pluck('lastname', 'id');
-        return view('finance.transactions.create')->with('categories', $categories)->with('accounts', $accounts)->with('members', $members);
+        $tags = FinanceTag::pluck('name', 'id');
+        return view('finance.transactions.create')
+            ->with('categories', $categories)
+            ->with('accounts', $accounts)
+            ->with('members', $members)
+            ->with('tags', $tags);
     }
 
     /**
@@ -46,14 +52,15 @@ class FinanceTransactionController extends Controller
     {
         $this->validate($request,
             [
-                'invoicedate' => 'bail|required|date|before_or_equal:paydate|max:191',
-                'paydate' => 'bail|date|required|max:191',
+                'invoicedate' => 'bail|required|date|before_or_equal:paydate',
+                'paydate' => 'bail|date|required',
                 'purpose' => 'bail|required|string',
-                'finance_account_id' => 'bail|required|max:191',
-                'amount' => 'bail|required|max:191',
-                'finance_category_id' => 'bail|required|max:191',
-                'receiptnumber' => 'bail|required|string|max:191|unique:finance_transactions',
-                'member_id' => 'bail|required|max:191',
+                'finance_account_id' => 'bail|required',
+                'amount' => 'bail|required',
+                'finance_category_id' => 'bail|required',
+                'receiptnumber' => 'bail|required|string|max:10|unique:finance_transactions',
+                'member_id' => 'bail|required',
+                'type' => 'bail|required'
             ],
             [
                 'invoicedate.required' => 'Das Rechungsdatum darf nicht leer sein!',
@@ -80,6 +87,8 @@ class FinanceTransactionController extends Controller
         $transaction->finance_category_id = $request->finance_category_id;
         $transaction->receiptnumber = $request->receiptnumber;
         $transaction->member_id = $request->member_id;
+        // Tags speichern
+        $transaction->type = $request->type;
 
         $transaction->save();
 
@@ -113,7 +122,13 @@ class FinanceTransactionController extends Controller
         $categories = FinanceCategory::pluck('name', 'id');
         $accounts = FinanceAccount::pluck('name', 'id');
         $members = Member::pluck('lastname', 'id');
-        return view('finance.transactions.edit')->with('transaction', $transaction)->with('categories', $categories)->with('accounts', $accounts)->with('members', $members);
+        $tags = FinanceTag::pluck('name', 'id');
+        return view('finance.transactions.edit')
+            ->with('transaction', $transaction)
+            ->with('categories', $categories)
+            ->with('accounts', $accounts)
+            ->with('members', $members)
+            ->with('tags', $tags);
     }
 
     /**

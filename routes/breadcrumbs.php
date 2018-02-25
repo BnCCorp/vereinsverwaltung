@@ -55,7 +55,7 @@ try {
 try {
     Breadcrumbs::register('category', function ($breadcrumbs, $category) {
         $breadcrumbs->parent('categories');
-        $breadcrumbs->push($category->name, route('finance.categories.edit', $category->id));
+        $breadcrumbs->push($category->name, route('finance.category.edit', $category->id));
     });
 } catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
 }

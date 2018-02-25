@@ -17,13 +17,11 @@
             <table class="bordered">
                 <thead>
                     <th>#</th>
-                    <th>Typ</th>
                     <th>Name</th>
                 </thead>
                 @foreach($categories as $category)
                 <tr>
                     <th>{{ $category->id }}</th>
-                    <td>{{ $category->type }}</td>
                     <td>{{ $category->name }}</td>
                     <td>
                         <a class="btn-floating waves-effect waves-light yellow lighten-1 button-edit">

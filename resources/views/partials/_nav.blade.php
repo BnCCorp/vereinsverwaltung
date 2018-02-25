@@ -29,7 +29,7 @@
                             <li><a class="nav-collapse-element" href="{!! route('finance.transactions.index') !!}"><i class="material-icons">credit_card</i>Transaktionen</a></li>
                             <li><a class="nav-collapse-element" href="{!! route('finance.accounts.index') !!}"><i class="material-icons">account_balance</i>Konten</a></li>
                             <li><a class="nav-collapse-element" href="{!! route('finance.category.index') !!}"><i class="material-icons">inbox</i>Kategorien</a></li>
-                            <li><a class="nav-collapse-element" href="#!"><i class="material-icons">local_offer</i>Tags</a></li>
+                            <li><a class="nav-collapse-element" href="{!! route('finance.tag.index') !!}"><i class="material-icons">local_offer</i>Tags</a></li>
                             <li><a class="nav-collapse-element" href="#!"><i class="material-icons">playlist_add_check</i>Auswertungen</a></li>
                         </ul>
                     </div>
