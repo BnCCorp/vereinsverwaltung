@@ -13,7 +13,7 @@ class CreateFinancetagFinancetransactionTable extends Migration
      */
     public function up()
     {
-        Schema::create('financetag_financetransaction', function (Blueprint $table) {
+        Schema::create('finance_tag_finance_transaction', function (Blueprint $table) {
             $table->integer('finance_tag_id')->unsigned()->nullable(); // Konto
             $table->foreign('finance_tag_id')->references('id')->on('finance_tags')->onUpdate('cascade')->onDelete('set null');
 

@@ -54,29 +54,38 @@ class FinanceTransactionController extends Controller
             [
                 'invoicedate' => 'bail|required|date|before_or_equal:paydate',
                 'paydate' => 'bail|date|required',
-                'purpose' => 'bail|required|string',
+                'purpose' => 'bail|required|string|max:191',
                 'finance_account_id' => 'bail|required',
-                'amount' => 'bail|required',
+                'amount' => 'bail|required|regex:/^\d*(\.\d{1,2})?$/', /*Nur Geldwerte vom Typ zb 123.45*/
                 'finance_category_id' => 'bail|required',
-                'receiptnumber' => 'bail|required|string|max:10|unique:finance_transactions',
+                'receiptnumber' => 'bail|required|string|max:10|unique:finance_transactions|regex:/^20\d{2}\-\d{3}$/', /*Nur Belegnummern im Format zb 2018-001*/
                 'member_id' => 'bail|required',
-                'type' => 'bail|required'
+                'type' => ['bail', 'required', Rule::in(['Ausgabe', 'Einnahme'])],
+                "tag_id" => 'array',
             ],
             [
                 'invoicedate.required' => 'Das Rechungsdatum darf nicht leer sein!',
                 'invoicedate.date'      => 'Das Rechungsdatum muss ein Datum sein!',
                 'invoicedate.max'      => 'Das Rechungsdatum darf höchstens 191 Zeichen enthalten!',
                 'invoicedate.before_or_equal' => 'Das Rechungsdatum darf nicht später als das Bezahldatum sein!',
-//                'type.required' => 'Der Typ darf nicht leer sein!',
-//                'type.max'      => 'Der Typ darf höchstens 191 Zeichen enthalten!',
-//                'startamount.required' => 'Der Anfangsbetrag darf nicht leer sein!',
-//                'startamount.numeric'      => 'Der Anfangsbetrag muss ein Geldbetrag sein!',
-//                'address.required_if' => 'Die IHab /Email darf nicht leer sein!',
-//                'address.max'      => 'Die IBAN/Email darf höchstens 191 Zeichen enthalten!',
+                'paydate.required' => 'Das Bezahldatum darf nicht leer sein!',
+                'paydate.date'      => 'Das Bezahldatum muss ein Datum sein!',
+                'purpose.required' => 'Der Zweck darf nicht leer sein!',
+                'purpose.max'      => 'Der Zweck darf höchstens 191 Zeichen enthalten!',
+                'purpose.string'      => 'Der Zweck muss eine Zeichenkette sein!',
+                'finance_account_id.required' => 'Der Das Konto darf nicht leer sein!',
+                'amount.required' => 'Der Betrag darf nicht leer sein!',
+                'amount.regex' => 'Der Betrag muss ein Geldbetrag sein! Trennzeichen ist der Punkt.',
+                'finance_category_id.required' => 'Der Das Konto darf nicht leer sein!',
+                'receiptnumber.required' => 'Die Belegnummer darf nicht leer sein!',
+                'receiptnumber.string'      => 'Die Belegnummer muss eine Zeichenkette sein!',
+                'receiptnumber.unique' => 'Die Belegnummer ist schon vergeben!',
+                'receiptnumber.max'      => 'Die Belegnummer darf nur 10 Zeichen enthalten!',
+                'receiptnumber.regex'      => 'Die Belegnummer muss folgendes Format haben: 2018-001!',
+                'member_id.required' => 'Das Mitglied darf nicht leer sein!',
+                'type.required' => 'Das Mitglied darf nicht leer sein!',
             ]
         );
-
-//        \Log::info("Member ID: " . $request->member_id);
 
         $transaction = new FinanceTransaction();
         $transaction->invoicedate = date("Y-m-d",strtotime(str_replace('.','-',$request->invoicedate)));
@@ -87,10 +96,13 @@ class FinanceTransactionController extends Controller
         $transaction->finance_category_id = $request->finance_category_id;
         $transaction->receiptnumber = $request->receiptnumber;
         $transaction->member_id = $request->member_id;
-        // Tags speichern
         $transaction->type = $request->type;
 
         $transaction->save();
+
+        // Tags speichern: Erst nachm Speichern der Transaktion. Die muss ja erst in der DB sein bevor man zu der ne Verknüpfung machen kann
+        // sync mit false: setup new relations without detaching previous AND without adding duplicates:
+        $transaction->tags()->sync($request->get('tag_id'), false);
 
         Session::flash('success', 'Transaktion angelegt.');
 
@@ -117,7 +129,6 @@ class FinanceTransactionController extends Controller
     public function edit($id)
     {
         $transaction = FinanceTransaction::find($id);
-//        return view('finance.transactions.edit')->with('transaction', $transaction);
 
         $categories = FinanceCategory::pluck('name', 'id');
         $accounts = FinanceAccount::pluck('name', 'id');
@@ -140,19 +151,45 @@ class FinanceTransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $transaction = FinanceTransaction::find($id);
         $this->validate($request,
             [
-//                'name' => 'bail|required|unique:finance_transactions|max:191',
+                'invoicedate' => 'bail|required|date|before_or_equal:paydate',
+                'paydate' => 'bail|date|required',
+                'purpose' => 'bail|required|string|max:191',
+                'finance_account_id' => 'bail|required',
+                'amount' => 'bail|required|regex:/^\d*(\.\d{1,2})?$/', /*Nur Geldwerte vom Typ zb 123.45*/
+                'finance_category_id' => 'bail|required',
+                'receiptnumber' => 'bail|required|string|max:10|unique:finance_transactions,receiptnumber,'. $transaction->id .'|regex:/^20\d{2}\-\d{3}$/', /*Nur Belegnummern im Format zb 2018-001*/
+                'member_id' => 'bail|required',
+                'type' => ['bail', 'required', Rule::in(['Ausgabe', 'Einnahme'])],
+                "tag_id" => 'array',
             ],
             [
-//                'name.required' => 'Der Name darf nicht leer sein!',
-//                'name.max'      => 'Der Name darf höchstens 191 Zeichen enthalten!',
-//                'name.unique' => 'Der Name ist bereits vergeben!',
-//                'receiptnumber' => 'bail|required|string|max:191|unique:finance_transactions,' . $this->receiptnumber->id,
+                'invoicedate.required' => 'Das Rechungsdatum darf nicht leer sein!',
+                'invoicedate.date'      => 'Das Rechungsdatum muss ein Datum sein!',
+                'invoicedate.max'      => 'Das Rechungsdatum darf höchstens 191 Zeichen enthalten!',
+                'invoicedate.before_or_equal' => 'Das Rechungsdatum darf nicht später als das Bezahldatum sein!',
+                'paydate.required' => 'Das Bezahldatum darf nicht leer sein!',
+                'paydate.date'      => 'Das Bezahldatum muss ein Datum sein!',
+                'purpose.required' => 'Der Zweck darf nicht leer sein!',
+                'purpose.max'      => 'Der Zweck darf höchstens 191 Zeichen enthalten!',
+                'purpose.string'      => 'Der Zweck muss eine Zeichenkette sein!',
+                'finance_account_id.required' => 'Der Das Konto darf nicht leer sein!',
+                'amount.required' => 'Der Betrag darf nicht leer sein!',
+                'amount.regex' => 'Der Betrag muss ein Geldbetrag sein! Trennzeichen ist der Punkt.',
+                'finance_category_id.required' => 'Der Das Konto darf nicht leer sein!',
+                'receiptnumber.required' => 'Die Belegnummer darf nicht leer sein!',
+                'receiptnumber.string'      => 'Die Belegnummer muss eine Zeichenkette sein!',
+                'receiptnumber.unique' => 'Die Belegnummer ist schon vergeben!',
+                'receiptnumber.max'      => 'Die Belegnummer darf nur 10 Zeichen enthalten!',
+                'receiptnumber.regex'      => 'Die Belegnummer muss folgendes Format haben: 2018-001!',
+                'member_id.required' => 'Das Mitglied darf nicht leer sein!',
+                'type.required' => 'Das Mitglied darf nicht leer sein!',
             ]
         );
 
-        $transaction = new FinanceTransaction();
+//        $transaction = FinanceTransaction::find($id);
         $transaction->invoicedate = date("Y-m-d",strtotime(str_replace('.','-',$request->invoicedate)));
         $transaction->paydate = date("Y-m-d",strtotime(str_replace('.','-',$request->paydate)));
         $transaction->purpose = $request->purpose;
@@ -161,8 +198,15 @@ class FinanceTransactionController extends Controller
         $transaction->finance_category_id = $request->finance_category_id;
         $transaction->receiptnumber = $request->receiptnumber;
         $transaction->member_id = $request->member_id;
+        $transaction->type = $request->type;
 
         $transaction->save();
+
+        // Tags speichern: Erst nachm Speichern der Transaktion. Die muss ja erst in der DB sein bevor man zu der ne Verknüpfung machen kann
+        // sync mit false: setup new relations without detaching previous AND without adding duplicates:
+        // Beim Update: Alle in Transaktion gespeicherten detached machen (löschen) und dann die aus dem Update einfügen. Geht bestimmt schöner
+        $transaction->tags()->detach($transaction->tags);
+        $transaction->tags()->sync($request->get('tag_id'), false);
 
         Session::flash('success', 'Änderungen gespeichert.');
 

@@ -105,3 +105,4 @@ Bei einer Finanzkategorie muss die Kombination aus `name` und `type` eindeutig s
     Die Änderungen im Model sind hier beschrieben: [https://www.easylaravelbook.com/blog/creating-a-hasmany-relation-in-laravel-5/](https://www.easylaravelbook.com/blog/creating-a-hasmany-relation-in-laravel-5/)
     
     * bei n:m diesem Tutorial folgen: [https://www.easylaravlbook.com/blog/introducing-laravel-many-to-many-relations/](https://www.easylaravelbook.com/blog/introducing-laravel-many-to-many-relations/)
+    Many to many ist null trivial! Wie es geht folgt noch

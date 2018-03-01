@@ -42,7 +42,7 @@ class FinanceAccountController extends Controller
             [
                 'name' => 'bail|required|unique:finance_accounts|max:191',
                 'type' => ['bail', 'required', 'max:191', Rule::in(['Barkasse', 'Girokonto', 'Onlinekonto'])],
-                'startamount' => 'bail|required|numeric',
+                'startamount' => 'bail|required|regex:/^\d*(\.\d{1,2})?$/',
                 'address' => 'bail|required_if:type,Girokonto,Onlinekonto|max:191',
             ],
             [
@@ -52,7 +52,7 @@ class FinanceAccountController extends Controller
                 'type.required' => 'Der Typ darf nicht leer sein!',
                 'type.max'      => 'Der Typ darf höchstens 191 Zeichen enthalten!',
                 'startamount.required' => 'Der Anfangsbetrag darf nicht leer sein!',
-                'startamount.numeric'      => 'Der Anfangsbetrag muss ein Geldbetrag sein!',
+                'startamount.regex'      => 'Der Anfangsbetrag muss ein Geldbetrag sein!',
                 'address.required_if' => 'Die IBAN/Email darf nicht leer sein!',
                 'address.max'      => 'Die IBAN/Email darf höchstens 191 Zeichen enthalten!',
             ]

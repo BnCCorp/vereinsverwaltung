@@ -16,26 +16,33 @@
                 {{ Form::label('paydate', 'Bezahldatum:') }}
                 {{ Form::text('paydate', date("d.m.Y", strtotime($transaction->paydate)), ['class' => 'datepicker', 'autocomplete' => "off"]) }}
 
-                {{ Form::label('purpose', 'Zweck:') }}
+                {{ Form::label('purpose', 'Verwendungszweck:') }}
                 {{ Form::text('purpose', $transaction->purpose, ['class' => 'input-field']) }}
 
                 {{--Select --}}
                 {{ Form::label('finance_account_id', 'Konto:') }}
-                {{ Form::select('finance_account_id', $accounts, $transaction->finance_account_id, ['placeholder' => 'Typ wählen...']) }}
+                {{ Form::select('finance_account_id', $accounts, $transaction->finance_account_id, ['placeholder' => 'Konto wählen...']) }}
 
                 {{ Form::label('amount', 'Betrag:') }}
                 {{ Form::text('amount', $transaction->amount, ['class' => 'input-field']) }}
 
                 {{--Select --}}
                 {{ Form::label('finance_category_id', 'Kategorie:') }}
-                {{ Form::select('finance_category_id', $categories, $transaction->finance_category_id, ['placeholder' => 'Typ wählen...']) }}
+                {{ Form::select('finance_category_id', $categories, $transaction->finance_category_id, ['placeholder' => 'Kategorie wählen...']) }}
 
                 {{ Form::label('receiptnumber', 'Belegnummer:') }}
                 {{ Form::text('receiptnumber', $transaction->receiptnumber, ['class' => 'input-field']) }}
 
                 {{--Select --}}
                 {{ Form::label('member_id', 'Mitlgied:') }}
-                {{ Form::select('member_id', $members, $transaction->member_id, ['placeholder' => 'Typ wählen...']) }}
+                {{ Form::select('member_id', $members, $transaction->member_id, ['placeholder' => 'Mitlgied wählen...']) }}
+
+                {{ Form::label('type', 'Typ:') }}
+                {{ Form::select('type', ['Ausgabe' => 'Ausgabe', 'Einnahme' => 'Einnahme'], $transaction->type, ['placeholder' => 'Art der Transaktion...']) }}
+
+                {{--Select --}}
+                {{ Form::label('tag_id', 'Tag:') }}
+                {!! Form::select('tag_id[]', $tags, $transaction->tags, ['multiple' => 'multiple']) !!}
                 <div>
                     <a class="btn btn-submit-form waves-effect waves-light red lighten-1 col l5" href="{{ URL::previous() }}">Abbrechen<i class="material-icons left">cancel</i></a>
                     {{ Form::button('Speichern<i class="material-icons right">send</i>', ['type' => 'submit', 'class' => 'btn btn-submit-form waves-effect waves-light green lighten-1 col l5 offset-l2']) }}

@@ -19,7 +19,7 @@
                     <th>#</th>
                     <th>Rechungsdatum</th>
                     <th>Bezahldatum</th>
-                    <th>Zweck</th>
+                    <th>Verwendungszweck</th>
                     <th>Konto</th>
                     <th>Betrag</th>
                     <th>Kategorie</th>
@@ -42,7 +42,8 @@
                     <td>{{ $transaction->receiptnumber }}</td>
                     {{--Der Eintrag kann, aufgrund von foreignkey, null sein--}}
                     <td>{!! $transaction->member_id ? App\Member::find($transaction->member_id)->lastname : 'undefined' !!}</td>
-                    <td>{!! $transaction->finance_tags ? $transaction->finance_tags : 'undefined' !!}</td>
+                    {{--<td>{!! $transaction->tags /* ? $transaction->tags() : 'undefined'*/ !!}</td>--}}
+                    <td> @foreach($transaction->tags as $tags) {!! $tags->name !!} <br> @endforeach{{--? $transaction->tags() : 'undefined'--}} </td>
                     <td>{{ $transaction->type }}</td>
                     <td>
                         <a class="btn-floating waves-effect waves-light yellow lighten-1 button-edit">

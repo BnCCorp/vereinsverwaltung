@@ -15,7 +15,7 @@
                 {{ Form::label('paydate', 'Bezahldatum:') }}
                 {{ Form::text('paydate', null, ['class' => 'datepicker', 'autocomplete' => "off"]) }}
 
-                {{ Form::label('purpose', 'Zweck:') }}
+                {{ Form::label('purpose', 'Verwendungszweck:') }}
                 {{ Form::text('purpose', null, ['class' => 'input-field']) }}
 
                 {{--Select --}}
@@ -36,28 +36,19 @@
                 {{ Form::label('member_id', 'Mitglied:') }}
                 {{ Form::select('member_id', $members, null, ['placeholder' => 'Mitglied wählen...']) }}
 
-                {{ Form::label('type', 'Typ:') }} <br>
-                {{--{!! Form::radio('type', '1', false, array('id'=>'type')) !!}--}}
-                {{--{!! Form::radio('type', '2', false, array('id'=>'type')) !!}--}}
-                {!! Form::radio('type', 'Einnahme', true) !!} Einnahme <br>
-                {!! Form::radio('type', 'Ausgabe', true) !!} Ausgabe
-                <br>
+                {{ Form::label('type', 'Typ:') }}
+                {{ Form::select('type', ['Ausgabe' => 'Ausgabe', 'Einnahme' => 'Einnahme'], null, ['placeholder' => 'Art der Transaktion...']) }}
 
                 {{--Select --}}
                 {{ Form::label('tag_id', 'Tag:') }}
-                {!! Form::select('tag_id', $tags, null, ['multiple' => 'multiple']) !!}
-
-
-
-
-            <div>
+                {!! Form::select('tag_id[]', $tags, null, ['multiple' => 'multiple']) !!}
+                 <div>
                     <a class="btn btn-submit-form waves-effect waves-light red lighten-1 col l5" href="{{ URL::previous() }}">Abbrechen<i class="material-icons left">cancel</i></a>
                     {{ Form::button('Speichern<i class="material-icons right">send</i>', ['type' => 'submit', 'class' => 'btn btn-submit-form waves-effect waves-light green lighten-1 col l5 offset-l2']) }}
                 </div>
             {!! Form::close() !!}
         </div>
     </div>
-
 @endsection
 
 @section('scripts')
