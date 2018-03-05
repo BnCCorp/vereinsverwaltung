@@ -7,6 +7,7 @@ use App\FinanceCategory;
 use App\FinanceTag;
 use App\FinanceTransaction;
 use App\Member;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Session;
@@ -88,8 +89,8 @@ class FinanceTransactionController extends Controller
         );
 
         $transaction = new FinanceTransaction();
-        $transaction->invoicedate = date("Y-m-d",strtotime(str_replace('.','-',$request->invoicedate)));
-        $transaction->paydate = date("Y-m-d",strtotime(str_replace('.','-',$request->paydate)));
+        $transaction->invoicedate = (new Carbon($request->invoicedate))->toDateString();
+        $transaction->paydate = (new Carbon($request->paydate))->toDateString();
         $transaction->purpose = $request->purpose;
         $transaction->finance_account_id = $request->finance_account_id;
         $transaction->amount = $request->amount;
@@ -189,9 +190,8 @@ class FinanceTransactionController extends Controller
             ]
         );
 
-//        $transaction = FinanceTransaction::find($id);
-        $transaction->invoicedate = date("Y-m-d",strtotime(str_replace('.','-',$request->invoicedate)));
-        $transaction->paydate = date("Y-m-d",strtotime(str_replace('.','-',$request->paydate)));
+        $transaction->invoicedate = (new Carbon($request->invoicedate))->toDateString();
+        $transaction->paydate = (new Carbon($request->paydate))->toDateString();
         $transaction->purpose = $request->purpose;
         $transaction->finance_account_id = $request->finance_account_id;
         $transaction->amount = $request->amount;
