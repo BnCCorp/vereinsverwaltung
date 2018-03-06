@@ -114,6 +114,7 @@ class MemberController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $member = Member::find($id);
         $this->validate($request,
             [
                 'firstname' => 'bail|required|max:191',
@@ -121,7 +122,8 @@ class MemberController extends Controller
                 'street' => 'bail|required|max:191',
                 'zipcode' => 'bail|required|max:191',
                 'city' => 'bail|required|max:191',
-                'email' => 'bail|required|unique:members|email|max:191',
+                'email' => 'bail|required|unique:members,email, '. $member->id .'|email|max:191',
+                // unique:finance_transactions,receiptnumber,'. $transaction->id .'
                 'phonenumber' => 'bail|max:191',
             ],
             [
@@ -143,7 +145,6 @@ class MemberController extends Controller
             ]
         );
 
-        $member = Member::find($id);
         $member->firstname = $request->firstname;
         $member->lastname = $request->lastname;
         $member->street = $request->street;

@@ -14,7 +14,8 @@
     </div>
     <div class="row">
         <div class="col l10 offset-l1 m10 offset-m1 s12">
-            <table class="bordered">
+            <table class="striped highlight responsive-table">
+            {{--<table class="bordered">--}}
                 <thead>
                     <th>#</th>
                     <th>Vorname</th>

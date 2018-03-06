@@ -14,7 +14,8 @@
     </div>
     <div class="row">
         <div class="col l10 offset-l1 m10 offset-m1 s12">
-            <table class="bordered">
+            <table class="striped highlight responsive-table">
+            {{--<table class="bordered">--}}
                 <thead>
                     <th>#</th>
                     <th>Rechungsdatum</th>
@@ -33,7 +34,8 @@
                     <th>{{ $transaction->id }}</th>
                     <td>{{ date("d.m.Y", strtotime($transaction->invoicedate)) }}</td>
                     <td>{{ date("d.m.Y", strtotime($transaction->paydate)) }}</td>
-                    <td>{{ $transaction->purpose }}</td>
+                    {{--sticky width. Nicht schön, aber besser als ein hässliches Design. Grid löst das Problem sicherlich--}}
+                    <td style="max-width: 180px;">{{ $transaction->purpose }}</td>
                     {{--Der Eintrag kann, aufgrund von foreignkey, null sein--}}
                     <td>{!! $transaction->finance_account_id ? App\FinanceAccount::find($transaction->finance_account_id)->name : 'undefined' !!}</td>
                     <td>{{ $transaction->amount }}</td>

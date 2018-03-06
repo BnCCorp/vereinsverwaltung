@@ -21,7 +21,7 @@
                 {{ Form::label('city', 'Stadt:') }}
                 {{ Form::text('city', $member->city, ['class' => 'input-field']) }}
                 {{ Form::label('email', 'Email:') }}
-                {{ Form::text('email', $member->email, ['class' => 'input-field']) }}
+                {{ Form::email('email', $member->email, ['class' => 'input-field']) }}
                 {{ Form::label('phonenumber', 'Telefonnummer:') }}
                 {{ Form::text('phonenumber', $member->phonenumber, ['class' => 'input-field']) }}
                 <div>

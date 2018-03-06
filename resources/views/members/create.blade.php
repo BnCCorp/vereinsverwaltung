@@ -20,7 +20,7 @@
                 {{ Form::label('city', 'Stadt:') }}
                 {{ Form::text('city', null, ['class' => 'input-field']) }}
                 {{ Form::label('email', 'Email:') }}
-                {{ Form::text('email', null, ['class' => 'input-field']) }}
+                {{ Form::email('email', null, ['class' => 'input-field']) }}
                 {{ Form::label('phonenumber', 'Telefonnummer:') }}
                 {{ Form::text('phonenumber', null, ['class' => 'input-field']) }}
                 <div>

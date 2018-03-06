@@ -8,6 +8,7 @@ use App\FinanceTag;
 use App\FinanceTransaction;
 use App\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Session;
 
@@ -22,6 +23,28 @@ class FinanceTransactionController extends Controller
     {
         $transactions = FinanceTransaction::all();
         return view('finance.transactions.index')->with('transactions', $transactions);
+    }
+
+    public function bonus()
+    {
+        $transaction = new FinanceTransaction();
+        $transaction->purpose = "Aufwandsentschädigung NAME nach Antrag von DATUM";
+        $var = DB::table('finance_categories')->where("name", "=", "Aufwandsentschädigung")->first();
+//        echo '<script>console.log('. json_encode($var->id) .')</script>';
+        $transaction->finance_category_id = $var->id;
+//        echo '<script>console.log('. json_encode(FinanceCategory::find($transaction->finance_category_id)->name) .')</script>';
+        $transaction->type = "Ausgabe";
+
+        $categories = FinanceCategory::pluck('name', 'id');
+        $accounts = FinanceAccount::pluck('name', 'id');
+        $members = Member::pluck('lastname', 'id');
+        $tags = FinanceTag::pluck('name', 'id');
+        return view('finance.transactions.create')
+            ->with('transaction', $transaction)
+            ->with('categories', $categories)
+            ->with('accounts', $accounts)
+            ->with('members', $members)
+            ->with('tags', $tags);
     }
 
     /**
@@ -189,7 +212,6 @@ class FinanceTransactionController extends Controller
             ]
         );
 
-//        $transaction = FinanceTransaction::find($id);
         $transaction->invoicedate = date("Y-m-d",strtotime(str_replace('.','-',$request->invoicedate)));
         $transaction->paydate = date("Y-m-d",strtotime(str_replace('.','-',$request->paydate)));
         $transaction->purpose = $request->purpose;

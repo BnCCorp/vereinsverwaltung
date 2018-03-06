@@ -65,38 +65,47 @@ php artisan migrate
 ```
 erstellen könnt!
 
-### Server starten
+#### Server starten
 ```
 php artisan serve
 ```
 
-### Model erstellen
+#### Model erstellen
 Das Model generiert zusätzlich automatisch eine Migration File (make:migration Befehl ist hier nicht notwendig)
 ```
 php artisan make:model User -m
 ```
 
-### create Migrations File (users durch Tabelle/Befehl ersetzen)
+#### create Migrations File (users durch Tabelle/Befehl ersetzen)
 ```
 php artisan make:migration create_users_table
 ```
 
-### Alle migrations ausführen
+#### Alle migrations ausführen
 ```
 php artisan migrate
 ```
 
-### Unique Validation für 2 Spalten
+#### Unique Validation für 2 Spalten
 ```
 'unique:TABELLEN_NAME,SPALTE_1,NULL,id,SPALTE_2,' . request->WERT_VON_SPALTE_2
 ```
 
-#### Beispiel:
+##### Beispiel:
 
 Bei einer Finanzkategorie muss die Kombination aus `name` und `type` eindeutig sein
 ```
 'unique:finance_categories,name,NULL,id,type,' . request->type
 ```
+
+# Objekte nach SQL-Kriterien aus der DB ziehen
+Will man Objekte aus der Datenbank bekommen, die bestimmte Kriterien erfüllen sollen (z. B. Alter > 20), so kann man
+folgendes tun:
+```
+$var = DB::table('TABELLEN_NAME')->where("SPALTE", "LOGISCHE_OPERATION", "WERT")->get();
+```
+Nachzulesen unter [https://laravel.com/docs/5.6/queries#where-clauses](https://laravel.com/docs/5.6/queries#where-clauses)  
+Die Abfragen können sehr umfangreich werden. Ausgaben sind Listen bei `get()`. `first()` liefert ein Element.
 
 # Database Relationship
 * Fremdschlüssel:
