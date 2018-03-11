@@ -4,7 +4,7 @@
 
 @section('content')
 
-    {{--{{ Breadcrumbs::render('categories') }}--}}
+    {{ Breadcrumbs::render('tags') }}
     <a href="{!! route('finance.tag.create') !!}" class="btn-floating btn-large waves-effect waves-light green btn-category-add"><i class="material-icons">add</i></a>
     <div class="row">
         {{--large 8, offset large 1; medium 8, offset medium 1; small 10, offset small 1--}}

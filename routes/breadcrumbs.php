@@ -14,6 +14,8 @@ try {
 } catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
 }
 
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 // Home > Members
 try {
     Breadcrumbs::register('members', function ($breadcrumbs) {
@@ -33,6 +35,17 @@ try {
 } catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
 }
 
+// Home > Members > New Member
+try {
+    Breadcrumbs::register('new member', function ($breadcrumbs) {
+        $breadcrumbs->parent('members');
+        $breadcrumbs->push('Neues Mitglied', action('MemberController@create'));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 // Home > Finance
 try {
     Breadcrumbs::register('finance', function ($breadcrumbs) {
@@ -41,6 +54,8 @@ try {
     });
 } catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
 }
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // Home > Finance > Categories
 try {
@@ -60,6 +75,17 @@ try {
 } catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
 }
 
+// Home > Finance > Categories > New Category
+try {
+    Breadcrumbs::register('new category', function ($breadcrumbs) {
+        $breadcrumbs->parent('categories');
+        $breadcrumbs->push('Neue Kategorie', action('FinanceCategoryController@create'));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 // Home > Finance > Bankaccounts
 try {
     Breadcrumbs::register('accounts', function ($breadcrumbs) {
@@ -78,15 +104,69 @@ try {
 } catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
 }
 
-//try {
-//    Breadcrumbs::register('category', function ($breadcrumbs, $category) {
-//        if ($category->parent) {
-//            $breadcrumbs->parent('category', $category->parent);
-//        } else {
-//            $breadcrumbs->parent('category');
-//        }
-//
-//        $breadcrumbs->push($category->name, route('category', $category->slug));
-//    });
-//} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
-//}
+// Home > Finance > Bankaccounts > New Bankaccount
+try {
+    Breadcrumbs::register('new account', function ($breadcrumbs) {
+        $breadcrumbs->parent('accounts');
+        $breadcrumbs->push('Neues Konto', action('FinanceAccountController@create'));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Home > Finance > Tags
+try {
+    Breadcrumbs::register('tags', function ($breadcrumbs) {
+        $breadcrumbs->parent('finance');
+        $breadcrumbs->push('Tags', action('FinanceTagController@index'));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
+
+// Home > Finance > Tags > [Tag]
+try {
+    Breadcrumbs::register('tag', function ($breadcrumbs, $tag) {
+        $breadcrumbs->parent('tags');
+        $breadcrumbs->push($tag->name, route('finance.tag.edit', $tag->id));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
+
+// Home > Finance > Tags > New Tag
+try {
+    Breadcrumbs::register('new tag', function ($breadcrumbs) {
+        $breadcrumbs->parent('tags');
+        $breadcrumbs->push('Neuer Tag', action('FinanceTagController@create'));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Home > Finance > Transactions
+try {
+    Breadcrumbs::register('transactions', function ($breadcrumbs) {
+        $breadcrumbs->parent('finance');
+        $breadcrumbs->push('Transaktionen', action('FinanceTransactionController@index'));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
+
+// Home > Finance > Transactions > [Transaction]
+try {
+    Breadcrumbs::register('transaction', function ($breadcrumbs, $transaction) {
+        $breadcrumbs->parent('transactions');
+        $breadcrumbs->push($transaction->receiptnumber, route('finance.transactions.edit', $transaction->id));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}
+
+// Home > Finance > Transactions > New Transaction
+try {
+    Breadcrumbs::register('new transaction', function ($breadcrumbs) {
+        $breadcrumbs->parent('transactions');
+        $breadcrumbs->push('Neue Transaktion', action('FinanceTransactionController@create'));
+    });
+} catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
+}

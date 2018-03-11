@@ -4,6 +4,7 @@
 
 @section('content')
 
+    {{ Breadcrumbs::render('new category') }}
     <div class="row">
         <div class="col l8 offset-l2 m8 offset-m2 s10 offset-s1">
             <h4>Neue Kategorie</h4>

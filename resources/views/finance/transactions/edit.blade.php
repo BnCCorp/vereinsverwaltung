@@ -4,7 +4,7 @@
 
 @section('content')
 
-    {{--{{ Breadcrumbs::render('account', $account) }}--}}
+    {{ Breadcrumbs::render('transaction', $transaction) }}
     <div class="row">
         <div class="col l8 offset-l2 m8 offset-m2 s10 offset-s1">
             <h4>Editiere Transaktion</h4>
