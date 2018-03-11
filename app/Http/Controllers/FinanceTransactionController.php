@@ -48,6 +48,28 @@ class FinanceTransactionController extends Controller
             ->with('tags', $tags);
     }
 
+    public function garagerent()
+    {
+        $transaction = new FinanceTransaction();
+        $transaction->purpose = "Garagenmiete für MONAT";
+        $var = DB::table('finance_categories')->where("name", "=", "Garagenmiete")->first();
+//        echo '<script>console.log('. json_encode($var->id) .')</script>';
+        $transaction->finance_category_id = $var->id;
+//        echo '<script>console.log('. json_encode(FinanceCategory::find($transaction->finance_category_id)->name) .')</script>';
+        $transaction->type = "Ausgabe";
+
+        $categories = FinanceCategory::pluck('name', 'id');
+        $accounts = FinanceAccount::pluck('name', 'id');
+        $members = Member::pluck('lastname', 'id');
+        $tags = FinanceTag::pluck('name', 'id');
+        return view('finance.transactions.create')
+            ->with('transaction', $transaction)
+            ->with('categories', $categories)
+            ->with('accounts', $accounts)
+            ->with('members', $members)
+            ->with('tags', $tags);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

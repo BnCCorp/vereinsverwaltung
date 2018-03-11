@@ -11,8 +11,7 @@
             <h5>Vorlagen</h5>
             <a class="waves-effect waves-light btn"  href="{!! route('finance.transactions.create') !!}">Clear</a>
             <a class="waves-effect waves-light btn"  href="{!! action('FinanceTransactionController@bonus'); !!}">Aufwandsentschädigung</a>
-            {{--<a class="waves-effect waves-light btn"  href="{!! route('finance.transactions.bonus') !!}">Aufwandsentschädigung</a>--}}
-            <a class="waves-effect waves-light btn">Garagenmiete</a>
+            <a class="waves-effect waves-light btn"  href="{!! action('FinanceTransactionController@garagerent'); !!}">Garagenmiete</a>
             <div class="divider form-divider"></div>
             {!! Form::open(['route' => 'finance.transactions.store']) !!}
                 {{ Form::label('invoicedate', 'Rechungsdatum:') }}
@@ -48,8 +47,8 @@
 
                 {{--Select --}}
                 {{ Form::label('tag_id', 'Tag:') }}
-                {!! Form::select('tag_id[]', $tags, null, ['multiple' => 'multiple', 'placeholder' => 'Select Tags...']) !!}
-                 <div>
+                {!! Form::select('tag_id[]', $tags, null, ['multiple' => 'multiple']) !!}
+                <div>
                     <a class="btn btn-submit-form waves-effect waves-light red lighten-1 col l5" href="{{ URL::previous() }}">Abbrechen<i class="material-icons left">cancel</i></a>
                     {{ Form::button('Speichern<i class="material-icons right">send</i>', ['type' => 'submit', 'class' => 'btn btn-submit-form waves-effect waves-light green lighten-1 col l5 offset-l2']) }}
                 </div>
