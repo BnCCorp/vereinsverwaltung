@@ -31,7 +31,7 @@ class FinanceTransactionController extends Controller
         $transaction = new FinanceTransaction();
         $transaction->purpose = "Aufwandsentschädigung NAME nach Antrag von DATUM";
         $var = DB::table('finance_categories')->where("name", "=", "Aufwandsentschädigung")->first();
-//        echo '<script>console.log('. json_encode($var->id) .')</script>';
+//        echo '<script>console.log('. json_encode($var) .')</script>';
         $transaction->finance_category_id = $var->id;
 //        echo '<script>console.log('. json_encode(FinanceCategory::find($transaction->finance_category_id)->name) .')</script>';
         $transaction->type = "Ausgabe";

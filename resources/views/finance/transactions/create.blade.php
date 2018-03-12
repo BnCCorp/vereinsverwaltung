@@ -32,16 +32,6 @@
                     {{ Form::text('purpose', !empty($transaction) ? $transaction->purpose : null) }}
                 </div>
 
-            {{--<div class="input-field col s6">--}}
-                {{--<label>Materialize Select</label>--}}
-                {{--<select>--}}
-                    {{--<option value="" disabled selected>Choose your option</option>--}}
-                    {{--<option value="1">Option 1</option>--}}
-                    {{--<option value="2">Option 2</option>--}}
-                    {{--<option value="3">Option 3</option>--}}
-                {{--</select>--}}
-            {{--</div>--}}
-
                 <div class="input-field col s6">
                     {{ Form::label('receiptnumber', 'Belegnummer:') }}
                     {{ Form::text('receiptnumber', null) }}
@@ -61,7 +51,7 @@
                 <div class="col s6">
                     {{--Select --}}
                     {{ Form::label('finance_category_id', 'Kategorie:') }}
-                    {{ Form::select('finance_category_id', $categories, null) }}
+                    {{ Form::select('finance_category_id', $categories, !empty($transaction) ? $transaction->finance_category_id : null) }}
                 </div>
 
                 <div class=" col s6">
