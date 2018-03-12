@@ -5,7 +5,7 @@
 @section('content')
 
     {{ Breadcrumbs::render('accounts') }}
-    <a href="{!! route('finance.accounts.create') !!}" class="btn-floating btn-large waves-effect waves-light green btn-category-add"><i class="material-icons">add</i></a>
+    <a href="{!! route('finance.accounts.create') !!}" class="btn-floating btn-large waves-effect waves-light green btn-add-element"><i class="material-icons">add</i></a>
     <div class="row">
         {{--large 8, offset large 1; medium 8, offset medium 1; small 10, offset small 1--}}
         <div class="col l8 offset-l1 m8 offset-m1 s10 offset-s1">

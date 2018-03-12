@@ -74,13 +74,12 @@ dd {
     /*background: #3c763d;*/
 }
 
-.btn-category-add {
+.btn-add-element {
     top: auto !important;
     left: auto !important;
-    bottom: 5%;
-    right: 3%;
-    position: absolute;
-    /*background: #3c763d;*/
+    bottom: 35px;
+    right: 35px;
+    position: fixed;
 }
 
 .breadcrumb {
