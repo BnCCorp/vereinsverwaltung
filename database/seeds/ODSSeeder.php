@@ -182,7 +182,7 @@ class ODSSeeder extends Seeder
                         }
                         //date
                         else if (filter_var($formattedValue, FILTER_VALIDATE_REGEXP,
-                            ["options" => ["regexp" => '/(0?[1-9]|[12][0-9]|3[01])-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dez)-[0-9]{2}/']]))
+                            ["options" => ["regexp" => '/(0?[1-9]|[12][0-9]|3[01])-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-[0-9]{2}/']]))
                         {
                             $formattedValue = new Carbon($formattedValue);
                         }
