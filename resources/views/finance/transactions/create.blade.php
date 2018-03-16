@@ -13,7 +13,7 @@
             <h5>Vorlagen</h5>
             <a class="waves-effect waves-light btn" href="{!! route('finance.transactions.create') !!}">Clear</a>
             <a class="waves-effect waves-light btn" href="{!! action('FinanceTransactionController@bonus'); !!}">Aufwandsentschädigung</a>
-            <a class="waves-effect waves-light btn" href="{!! action('FinanceTransactionController@garagerent'); !!}">Garagenmiete</a>
+            {{--<a class="waves-effect waves-light btn" href="{!! action('FinanceTransactionController@garagerent'); !!}">Garagenmiete</a>--}}
             <br>
             <div class="divider form-divider"></div>
                 {!! Form::open(['route' => 'finance.transactions.store']) !!}
