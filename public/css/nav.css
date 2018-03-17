@@ -3,12 +3,12 @@
 }
 
 .side-nav {
-    top: 65px;
+    /*top: 65px;*/
     width: 250px;
 }
 
 .side-nav .collapsible-header, .side-nav.fixed .collapsible-header {
-    padding: 0 32px;
+    padding: 0 10px 0 16px;
 }
 
 .content {
@@ -56,9 +56,17 @@ dd {
     padding: 0 0 0.5em 0;
 }
 
+header, main, footer {
+    padding-left: 250px;
+}
+
 @media only screen and (max-width: 992px) {
     .content {
         margin-left: 0px;
+    }
+
+    header, main, footer {
+        padding-left: 0;
     }
 
     .brand-logo {
@@ -93,6 +101,11 @@ dd {
 .side-nav .collapsible-body li a, .side-nav.fixed .collapsible-body li a {
     padding-left: 45px;
 }
+
+/*FIX SIDENAV SPACING*/
+   .side-nav li>a {
+       padding: 0 16px;
+   }
 
 .select-wrapper + label {
     position: relative;
