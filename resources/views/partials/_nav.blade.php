@@ -14,29 +14,12 @@
     });
 </script>
 
-{{--<header>
-    <div class="navbar-fixed">
-        <div class="nav-wrapper">
-            <nav class="light-green lighten-1" role="navigation">
-                <div class="nav-wrapper">
-                    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-                    <a href="{!! action('PageController@index') !!}" class="brand-logo left"><strong>NAJU</strong> Ahlen</a>
-                </div>
-            </nav>
-        </div>
-    </div>
-</header>--}}
-
-
 <nav class="light-green lighten-1" role="navigation">
     <div class="nav-wrapper">
         <header>
             <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
             <a href="{!! action('PageController@index') !!}" class="brand-logo left"><strong>NAJU</strong> Ahlen</a>
         </header>
-
-
-
         <ul id="slide-out" class="side-nav fixed">
             <li>
                 <div class="col col s4 m4 l4">
@@ -71,7 +54,6 @@
                             <ul>
                                 <li><a class="waves-effect" href="#!"><i class="material-icons">format_list_numbered</i>Inventuren</a></li> {{--or archive--}}
                                 <li><a class="waves-effect" href="#!"><i class="material-icons">restore</i>Ausleihe</a></li>
-                                {{--nav-collapse-element--}}
                             </ul>
                         </div>
                     </li>
