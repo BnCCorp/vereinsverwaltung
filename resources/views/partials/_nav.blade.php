@@ -44,6 +44,7 @@
                     </li>
                 </ul>
             </li>
+            <li><a href="{!! route('volunteerwork.index') !!}" class="waves-effect waves-teal"><i class="material-icons">work</i>Ehrenamtliche Arbeit</a></li>
             <li><a href="#!" class="waves-effect waves-teal"><i class="material-icons">forum</i>Angelegenheiten</a></li> {{--or chat--}}
             <li><a href="#!" class="waves-effect waves-teal"><i class="material-icons">loop</i>Fortwährende Tasks</a></li>
             <li>

@@ -19,3 +19,4 @@ Route::get('finance/transactions/bonus', 'FinanceTransactionController@bonus', [
 Route::get('finance/transactions/garagerent', 'FinanceTransactionController@garagerent', ['as' => 'finance']);
 Route::resource('finance/transactions', 'FinanceTransactionController', ['as' => 'finance']);
 Route::resource('members', 'MemberController');
+Route::resource('volunteerwork', 'VolunteerWorkController');
