@@ -1,1 +1,0 @@
-20180205 (Steffen): Bei den Konten habe ich jetzt die IBAN/Emailadresse als "address" eingebaut
